@@ -8,6 +8,11 @@
 body {
 width: 640px;
 }
+
+pre {
+border: dotted black 1px ;
+padding: 0.8em;
+}
 </style>
 </head>
 <body>
@@ -38,11 +43,11 @@ It also provides a decent php.ini with all settings configured according to "Bes
 <h2 id="install">
 One Line Installation
 </h2>
-
-<code>
- curl -s http://php-osx.liip.ch/install.sh | bash -
-
-</code>
+<p>All you need to do to install the whole thing, is opening up a Shell and execute the following line:
+</p>
+<pre>
+curl -s http://php-osx.liip.ch/install.sh | bash -
+</pre>
 <p>
 It will ask you for your password. We install the packager in /usr/local/packer and PHP into 
 /usr/local/php5 and for this, we need your password. We don't do anything bad with it.
@@ -93,7 +98,6 @@ If you don't trust us, here's the code of install.sh, which you can run by yours
 curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz
 sudo tar -C /  -xzf /tmp/packager.tgz
 sudo /usr/local/packager/packager.py install tools-frontenddev 
-
 </pre> 
 <p>
 If you already have installed the packager and just want to update the PHP package, you can do it with
@@ -151,3 +155,4 @@ We can't provide support for this, but Pull Requests are always welcome. Use the
 </p>
 <h2 id="latest">Latest release
 </h2><li>
+

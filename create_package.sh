@@ -81,7 +81,8 @@ echo "install/$TYPE/$NAME/$TYPE-$NAME-$REL.tar.gz" > $UPLOADDIR/install/$TYPE-$N
 
 php uploadFile.php $root/../install/$TYPE-$NAME-latest.dat install/$TYPE-$NAME-latest.dat "text/plain"
 
-php uploadFile.php packager/packager.tgz packager/packager.tgz "application/x-gzip"
+tar -czf /tmp/packager.tgz packager
+php uploadFile.php /tmp/packager.tgz packager/packager.tgz "application/x-gzip"
 
 echo "$TYPE-$NAME-$REL</li></ul> </body></html>" > index.html.bottom
 cat index.html.tmpl index.html.bottom > index.html

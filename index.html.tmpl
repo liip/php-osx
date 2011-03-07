@@ -2,64 +2,152 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>PHP 5.3 for OS X 10.6 as binary package</title>
+<title>PHP 5.3 for OS X 10.6 as binary package
+</title>
+<style>
+body {
+width: 640px;
+}
+</style>
 </head>
 <body>
-<h1> PHP 5.3 for OS X 10.6 as binary package</h1>
-<p>This package installs the (usually) latest PHP 5.3.x  on OS X 10.6 (aka Snow Leopard) in /usr/local/php5. It installs many useful extensions (see below) and ini-settings and is what we at <a href="http://liip.ch">Liip</a> and <a href="http://local.ch">Local.ch</a> use for our development. It's especially suited for Symfony 2 developement.
-</p>
-<p>It doesn't install Apache, MySQL or any other external programs. It uses the Apache installation, which comes with OS X and for installing MySQL you can for example use <a href="http://mxcl.github.com/homebrew/">Homebrew</a>. The package is based on <a href="http://www.entropy.ch/software/macosx/php/">entropy's php package</a>.
-</p>
-<h2>Included extensions</h2>
-<p>bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, hash, iconv, imap, intl, json, ldap, libxml, mbstring, mcrypt, memcache, memcached, mhash, mongo, mssql, mysql, mysqli, mysqlnd, OAuth, odbc, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, Phar, posix, Reflection, session, shmop, SimpleXML, soap, sockets, solr, SPL, SQLite, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xhprof, xml, xmlreader, xmlrpc, xmlwriter, xsl, zip, zlib
-</p>
-<p>available but disabled by default: but compiled: apc, xslcache</p>
 
-<h2>
+<h1> PHP 5.3 for OS X 10.6 as binary package</h1>
+
+<a href="#install">Installation</a> | 
+<a href="#notes">Additional important notes</a> |
+<a href="#alt_installation">(Alternative) Installation by "hand" </a> |
+<a href="#ext">Included extensions</a> |
+<a href="#source">Source code</a> |
+<a href="#thanks">Thanks</a> |
+<a href="#support">Support</a>
+
+<h2>Intro</h2>
+<p>This package installs the (usually) latest PHP 5.3.x  on OS X 10.6 (aka Snow Leopard) in /usr/local/php5. It installs many useful extensions (see below) and ini-settings and is what we at <a href="http://liip.ch">Liip
+</a> and <a href="http://local.ch">Local.ch
+</a> use for our development. It's especially suited for Symfony 2 development.
+
+It also provides a decent php.ini with all settings configured according to "Best Practices".
+
+</p>
+<p>It doesn't install Apache, MySQL or any other external programs. It uses the Apache installation, which comes with OS X and for installing MySQL you can for example use <a href="http://mxcl.github.com/homebrew/">Homebrew
+</a>. The package is based on <a href="http://www.entropy.ch/software/macosx/php/">entropy's php package
+</a>.
+</p>
+
+<h2 id="install">
 One Line Installation
 </h2>
+
 <code>
  curl -s http://php-osx.liip.ch/install.sh | bash -
+
 </code>
 <p>
 It will ask you for your password. We install the packager in /usr/local/packer and PHP into 
 /usr/local/php5 and for this, we need your password. We don't do anything bad with it.
+
 </p>
-<h2>(Alternative) Installation by "hand" </h2>
+
+
+
+<h2 id="notes">Additional important notes</h2>
+
+<h3>php.ini</h3>
+<p>The php.ini is located in /usr/local/php5/lib/php.ini, additional config files are located in /usr/local/php5/php.d/. The php.ini is based on php.ini-development</p>
+
+<h3>Liip php.ini</h3>
+<p>
+The Liip php.ini for development is located in /usr/local/php5/php.d/99-liip-developer.ini.
+</p>
+
+<h3>Re-installs into new directory</h3>
+<p>
+All installed files go in a new directory with every update, you have to manually maintain/merge your changes from the old directory! (like pear installs)
+</p>
+
+<h3>apc and xslcache</h3>
+<p>
+apc and xslcache need to be enabled manually in /usr/local/php5/php.d/50-extension-apc.ini and /usr/local/php5/php.d/50-extension-xslcache.ini.
+</p>
+
+<h3>xdebug</h3>
+<p>xdebug settings needs to be configured (idekey etc) manually in /usr/local/php5/php.d/50-extension-xdebug.ini.
+</p>
+<h3>apache error with ulimit</h3>
+<p>
+If you are seeing "/usr/sbin/apachectl: line 82: ulimit: open files: cannot modify limit: Invalid argument" when loading apache, here is <a href="http://blog.deversus.com/2010/11/mac-os-1065-apachectl-usrsbinapachectl-line-82-ulimit-open-files-cannot-modify-limit-invalid-argument/">a fix</a>
+</p>
+
+
+
+
+
+
+<h2 id="alt_installation">(Alternative) Installation by "hand" </h2>
 <p>
 If you don't trust us, here's the code of install.sh, which you can run by yourself (instead of the one-liner above):
+
 </p>
 <pre>
 curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz
 sudo tar -C /  -xzf /tmp/packager.tgz
 sudo /usr/local/packager/packager.py install tools-frontenddev 
+
 </pre> 
 <p>
 If you already have installed the packager and just want to update the PHP package, you can do it with
 the following line.
+
 </p>
 <pre>
 sudo /usr/local/packager/packager.py install tools-frontenddev 
+
 </pre> 
-<h2>Source Code</h2>
+<h2 id="ext">Included extensions</h2>
+<p>bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, hash, iconv, imap, intl, json, ldap, libxml, mbstring, mcrypt, memcache, memcached, mhash, mongo, mssql, mysql, mysqli, mysqlnd, OAuth, odbc, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, Phar, posix, Reflection, session, shmop, SimpleXML, soap, sockets, solr, SPL, SQLite, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xhprof, xml, xmlreader, xmlrpc, xmlwriter, xsl, zip, zlib
+
+</p>
+<p>available but disabled by default: apc, xslcache
+</p>
+
+
+
+
+
+
+<h2 id="source">Source Code
+</h2>
 <ul>
 <li>
-<a href="https://github.com/liip/build-entropy-php">build-entropy-php</a>
+<a href="https://github.com/liip/build-entropy-php">build-entropy-php
+</a>
 </li>
 <li>
 packager by local.ch
+
 </li>
 <li>
-<a href="https://github.com/liip/php-osx/">php-osx repository on github</a>
+<a href="https://github.com/liip/php-osx/">php-osx repository on github
+</a>
+
 </li>
+
 </ul>
 
-<h2>Thanks</h2>
+<h2 id="thanks">Thanks
+</h2>
 <p>
-Thanks to <a href="http://local.ch">Local.ch</a>, which made all the groundwork for this. And thanks to <a href="http://liip.ch">Liip</a> for everything else.
+Thanks to <a href="http://local.ch">Local.ch</a>, which made all the groundwork for this. And thanks to <a href="http://liip.ch">Liip
+</a> for everything else.
+
 </p>
-<h2>Support</h2>
+<h2 id="support">Support
+</h2>
 <p>
-We can't provide support for this, but Pull Requests are always welcome. Use the <a href="https://github.com/liip/php-osx/issues">github issues page</a> for filing bug reports, but we don't guarantee anything.
+We can't provide support for this, but Pull Requests are always welcome. Use the <a href="https://github.com/liip/php-osx/issues">github issues page
+</a> for filing bug reports, but we don't guarantee anything.
+
 </p>
-<h2>Latest release</h2><li>
+<h2 id="latest">Latest release
+</h2><li>

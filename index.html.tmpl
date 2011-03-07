@@ -6,6 +6,15 @@
 </head>
 <body>
 <h1> PHP 5.3 for OS X 10.6 as binary package</h1>
+<p>This package installs the (usually) latest PHP 5.3.x  on OS X 10.6 (aka Snow Leopard) in /usr/local/php5. It installs many useful extensions (see below) and ini-settings and is what we at <a href="http://liip.ch">Liip</a> and <a href="http://local.ch">Local.ch</a> use for our development. It's especially suited for Symfony 2 developement.
+</p>
+<p>It doesn't install Apache, MySQL or any other external programs. It uses the Apache installation, which comes with OS X and for installing MySQL you can for example use <a href="http://mxcl.github.com/homebrew/">Homebrew</a>. The package is based on <a href="http://www.entropy.ch/software/macosx/php/">entropy's php package</a>.
+</p>
+<h2>Included extensions</h2>
+<p>bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, hash, iconv, imap, intl, json, ldap, libxml, mbstring, mcrypt, memcache, memcached, mhash, mongo, mssql, mysql, mysqli, mysqlnd, OAuth, odbc, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, Phar, posix, Reflection, session, shmop, SimpleXML, soap, sockets, solr, SPL, SQLite, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xhprof, xml, xmlreader, xmlrpc, xmlwriter, xsl, zip, zlib
+</p>
+<p>available but disabled by default: but compiled: apc, xslcache</p>
+
 <h2>
 One Line Installation
 </h2>
@@ -32,6 +41,25 @@ the following line.
 <pre>
 sudo /usr/local/packager/packager.py install tools-frontenddev 
 </pre> 
+<h2>Source Code</h2>
+<ul>
+<li>
+<a href="https://github.com/liip/build-entropy-php">build-entropy-php</a>
+</li>
+<li>
+packager by local.ch
+</li>
+<li>
+<a href="https://github.com/liip/php-osx/">php-osx repository on github</a>
+</li>
+</ul>
 
-
+<h2>Thanks</h2>
+<p>
+Thanks to <a href="http://local.ch">Local.ch</a>, which made all the groundwork for this. And thanks to <a href="http://liip.ch">Liip</a> for everything else.
+</p>
+<h2>Support</h2>
+<p>
+We can't provide support for this, but Pull Requests are always welcome. Use the <a href="https://github.com/liip/php-osx/issues">github issues page</a> for filing bug reports, but we don't guarantee anything.
+</p>
 <h2>Latest release</h2><li>

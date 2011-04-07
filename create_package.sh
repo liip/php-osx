@@ -66,7 +66,7 @@ echo "# create php.ini based on php.ini-development" >>$root/pkg/post-install
 echo "cp /usr/local/php5/lib/php.ini-development /usr/local/php5/lib/php.ini" >>$root/pkg/post-install
 cat  update_httpd_conf.sh >> $root/pkg/post-install
 echo "# restart apache" >>$root/pkg/post-install
-echo "echo 'Reloading Apache'" >>$root/pkg/post-install
+echo "echo 'Restarting Apache'" >>$root/pkg/post-install
 echo "/usr/sbin/apachectl restart" >>$root/pkg/post-install
 # tar the package
 cd $root

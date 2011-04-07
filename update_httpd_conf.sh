@@ -2,12 +2,12 @@
 SEARCH=`grep    "LoadModule.*php5_module.*/usr/local/php5/libphp5.so" httpd.conf`
 if [[ -z $SEARCH ]]
 then
-cp httpd.conf httpd.conf.before-phposx
+cp /etc/apache2/httpd.conf /etc/apache2/httpd.conf.before-phposx
 sed 's/\(#LoadModule.*php5_module.*libexec\/apache2\/libphp5.so.*\)/\1\
-LoadModule php5_module \/usr\/local\/php5\/libphp5.so/g' < httpd.conf > httpd.conf.phposx
-	if [[ -s httpd.conf.phposx ]]
+LoadModule php5_module \/usr\/local\/php5\/libphp5.so/g' < /etc/apache2/httpd.conf > /etc/apache2/httpd.conf.phposx
+	if [[ -s /etc/apache2/httpd.conf.phposx ]]
 	then
-		cp httpd.conf.phposx httpd.conf
+		cp /etc/apache2/httpd.conf.phposx /etc/apache2/httpd.conf
 		echo "LoadModule php5_module /usr/local/php5/libphp5.so"
 		echo "added to your httpd.conf"
 	else 

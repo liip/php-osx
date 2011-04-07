@@ -64,10 +64,10 @@ echo "# symlink" >>$root/pkg/post-install
 echo "rm -f '/usr/local/php5' && ln -s '/usr/local/php5-$REL' '/usr/local/php5'" >>$root/pkg/post-install
 echo "# create php.ini based on php.ini-development" >>$root/pkg/post-install
 echo "cp /usr/local/php5/lib/php.ini-development /usr/local/php5/lib/php.ini" >>$root/pkg/post-install
+cat  update_httpd_conf.sh >> $root/pkg/post-install
 echo "# restart apache" >>$root/pkg/post-install
 echo "echo 'Reloading Apache'" >>$root/pkg/post-install
-echo "/usr/sbin/apachectl configtest && /usr/sbin/apachectl graceful" >>$root/pkg/post-install
-
+echo "/usr/sbin/apachectl restart" >>$root/pkg/post-install
 # tar the package
 cd $root
 tar  -cjf ../$TYPE-$NAME-$REL.tar.bz2 --exclude 'share/doc/' --exclude 'man/' . || exit 1

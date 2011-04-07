@@ -3,10 +3,18 @@
 
 ORIPWD=$PWD
 
+# package type (subfolder in packager)
+
+if [ -z $1 ]; then
+	TYPE=tools
+else
+    TYPE=$1
+fi
+
+
+
 # name of the package
 NAME=frontenddev
-# package type (subfolder in packager)
-TYPE=tools
 # create a revision
 REL=$(date +%Y%m%d-%H%M%S)
 # root folder for the package creation

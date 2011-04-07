@@ -89,7 +89,7 @@ mkdir -p $UPLOADDIR/install/$TYPE/$NAME/
 
 cd $ORIPWD
 
-php uploadFile.php $root/../$TYPE-$NAME-$REL.tar.bz2 install/$TYPE/$NAME/$TYPE-$NAME-$REL.tar.gz "application/x-gzip"
+php uploadFile.php $root/../$TYPE-$NAME-$REL.tar.bz2 install/$TYPE/$NAME/$TYPE-$NAME-$REL.tar.bz2 "application/x-gzip"
 
 echo "install/$TYPE/$NAME/$TYPE-$NAME-$REL.tar.bz2" > $UPLOADDIR/install/$TYPE-$NAME-latest.dat
 

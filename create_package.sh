@@ -66,7 +66,7 @@ echo "/usr/sbin/apachectl configtest && /usr/sbin/apachectl graceful" >>$root/pk
 
 # tar the package
 cd $root
-tar -czf ../$TYPE-$NAME-$REL.tar.gz . || exit 1
+tar  -cjf ../$TYPE-$NAME-$REL.tar.bz2 --exclude 'share/doc/' --exclude 'man/' . || exit 1
 
 # upload to liip
 UPLOADDIR=/Volumes/s3-liip/php-osx.liip.ch/
@@ -75,9 +75,9 @@ mkdir -p $UPLOADDIR/install/$TYPE/$NAME/
 
 cd $ORIPWD
 
-php uploadFile.php $root/../$TYPE-$NAME-$REL.tar.gz install/$TYPE/$NAME/$TYPE-$NAME-$REL.tar.gz "application/x-gzip"
+php uploadFile.php $root/../$TYPE-$NAME-$REL.tar.bz2 install/$TYPE/$NAME/$TYPE-$NAME-$REL.tar.gz "application/x-gzip"
 
-echo "install/$TYPE/$NAME/$TYPE-$NAME-$REL.tar.gz" > $UPLOADDIR/install/$TYPE-$NAME-latest.dat
+echo "install/$TYPE/$NAME/$TYPE-$NAME-$REL.tar.bz2" > $UPLOADDIR/install/$TYPE-$NAME-latest.dat
 
 php uploadFile.php $root/../install/$TYPE-$NAME-latest.dat install/$TYPE-$NAME-latest.dat "text/plain"
 

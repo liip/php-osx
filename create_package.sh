@@ -46,9 +46,15 @@ depends: tools-memcached
 #echo "downloading latest php.ini-development"
 #curl http://svn.php.net/viewvc/php/php-src/trunk/php.ini-development?view=co > $root/usr/local/php5-$REL/lib/php.ini-development
 echo "using php.ini-development"
-cp src/php-5.*/php.ini-development $root/usr/local/php5-$REL/lib/php.ini-development
+for i in `find src/php* -name php.ini-development`; 
+do 
+	echo "cp $i to $root/usr/local/php5-$REL/lib/php.ini-development";
+	cp $i $root/usr/local/php5-$REL/lib/php.ini-development
+done
 
-echo "downloading and latest php.ini-liip"
+#cp src/php-5.*/php.ini-development $root/usr/local/php5-$REL/lib/php.ini-development
+
+echo "downloading latest php.ini-liip"
 curl https://svn.liip.ch/repos/public/misc/php-ini/php.ini-development >> $root/usr/local/php5-$REL/php.d/99-liip-developer.ini
 
 # generate post-initial (executed only on the inital, first installation)

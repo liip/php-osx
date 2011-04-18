@@ -8,6 +8,29 @@ else
     TYPE=$1
 fi
 
+if [[ $TYPE != "force" ]]; then
+	HAS64BIT=`sysctl -n hw.cpu64bit_capable 2> /dev/null`
+	if [[ $HAS64BIT != 1 ]]; then
+		echo "****"
+		echo "ERROR! 32 BIT NOT SUPPORTED!"
+		echo "****"
+		echo "No 64bit capable system found. Your hardware is too old."
+		echo "We don't support that (yet). Patches are welcome ;)"
+		echo "If you think that's wrong, try"
+		echo "****"
+		echo "curl -o install.sh -s http://php-osx.liip.ch/install.sh | bash install.sh force"
+		echo "****"
+		exit 1
+	fi
+fi
+
+if [[ $TYPE = "force" ]]; then
+	if [ -z $2 ]; then
+		TYPE=tools
+	else
+		TYPE=$2
+	fi
+fi
 
 echo "Get packager.tgz";
 curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz

@@ -9,6 +9,24 @@ else
 fi
 
 if [[ $TYPE != "force" ]]; then
+	OS_VERSION=`sw_vers -productVersion | grep -o 10\..`
+	if [[ $OS_VERSION == "10.7" ]]; then
+		echo "****"
+		echo "Mac OS X 10.7 Lion is not officially supported yet,"
+		echo " but it works on our test system."
+		echo "Nothing guaranteed, installing nevertheless"
+		echo "****"
+		sleep 2
+	elif [[ $OS_VERSION != "10.6" ]]; then
+		echo "****"
+		echo "Your version of OS X ($OS_VERSION) is not supported, you need at least 10.6"
+		echo "Stopping installation..."
+		echo "If you think that's wrong, try"
+		echo "****"
+		echo "curl -o install.sh -s http://php-osx.liip.ch/install.sh | bash install.sh force"
+		echo "****"
+		exit 2
+	fi
 	HAS64BIT=`sysctl -n hw.cpu64bit_capable 2> /dev/null`
 	if [[ $HAS64BIT != 1 ]]; then
 		echo "****"

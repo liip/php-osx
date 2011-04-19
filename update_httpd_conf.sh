@@ -1,5 +1,5 @@
 # try to update http.conf if there's the standard config
-SEARCH=`grep    "LoadModule.*php5_module.*/usr/local/php5/libphp5.so" httpd.conf`
+SEARCH=`grep    "LoadModule.*php5_module.*/usr/local/php5/libphp5.so" /etc/apache2/httpd.conf`
 if [[ -z $SEARCH ]]
 then
 cp /etc/apache2/httpd.conf /etc/apache2/httpd.conf.before-phposx

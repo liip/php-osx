@@ -20,3 +20,12 @@ else
 	echo "LoadModule php5_module /usr/local/php5/libphp5.so"
 	echo "is already in your httpd.conf. All looks good."
 fi
+
+# try adjusting /usr/sbin/envvars
+DYLD_PATH=`. /usr/sbin/envvars && echo $DYLD_FALLBACK_LIBRARY_PATH | grep /usr/local/php5/lib`
+if [[ -z $DYLD_PATH ]]
+then
+echo 'DYLD_FALLBACK_LIBRARY_PATH="/usr/local/php5/lib:$DYLD_FALLBACK_LIBRARY_PATH"' >> /usr/sbin/envvars
+echo 'export DYLD_FALLBACK_LIBRARY_PATH' >> /usr/sbin/envvars
+echo "Added /usr/local/php5/lib to DYLD_FALLBACK_LIBRARY_PATH in /usr/sbin/envvars"
+fi

@@ -22,10 +22,11 @@ else
 fi
 
 # try adjusting /usr/sbin/envvars
-DYLD_PATH=`. /usr/sbin/envvars && echo $DYLD_FALLBACK_LIBRARY_PATH | grep /usr/local/php5/lib`
-if [[ -z $DYLD_PATH ]]
+DYLD_PATH=`. /usr/sbin/envvars && echo $DYLD_LIBRARY_PATH | grep /usr/lib:`
+if [[ -n $DYLD_PATH ]]
 then
-echo 'DYLD_FALLBACK_LIBRARY_PATH="/usr/local/php5/lib:$DYLD_FALLBACK_LIBRARY_PATH"' >> /usr/sbin/envvars
-echo 'export DYLD_FALLBACK_LIBRARY_PATH' >> /usr/sbin/envvars
-echo "Added /usr/local/php5/lib to DYLD_FALLBACK_LIBRARY_PATH in /usr/sbin/envvars"
+echo "#added by php-osx" >> /usr/sbin/envvars
+echo 'DYLD_LIBRARY_PATH="'` echo -n $DYLD_LIBRARY_PATH | sed 's/\/usr\/lib://' `'"' >> /usr/sbin/envvars
+echo 'export DYLD_LIBRARY_PATH' >> /usr/sbin/envvars
+echo "Removed /usr/lib from DYLD_LIBRARY_PATH in /usr/sbin/envvars"
 fi

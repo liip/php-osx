@@ -1,24 +1,23 @@
 # try to update http.conf if there's the standard config
-SEARCH=`grep    "LoadModule.*php5_module.*/usr/local/php5/libphp5.so" /etc/apache2/httpd.conf`
-if [[ -z $SEARCH ]]
+SEARCH=`httpd -MT 2> /dev/null| grep php5`
+if [[ -n $SEARCH ]]
+then
+#deactivate php5_module in httpd.conf
+apxs -e -A -n php5 libphp5.so 2> /dev/null
+#search of there's an old entry to /usr/local/php5/libphp5.so in httpd.conf 
+SEARCH2=`grep /usr/local/php5/libphp5.so /etc/apache2/httpd.conf `
+if [[ -n $SEARCH2 ]]
 then
 cp /etc/apache2/httpd.conf /etc/apache2/httpd.conf.before-phposx
-sed 's/\(#LoadModule.*php5_module.*libexec\/apache2\/libphp5.so.*\)/\1\
-LoadModule php5_module \/usr\/local\/php5\/libphp5.so/g' < /etc/apache2/httpd.conf > /etc/apache2/httpd.conf.phposx
-	if [[ -s /etc/apache2/httpd.conf.phposx ]]
-	then
-		cp /etc/apache2/httpd.conf.phposx /etc/apache2/httpd.conf
-		echo "LoadModule php5_module /usr/local/php5/libphp5.so"
-		echo "added to your httpd.conf"
-	else 
-    		echo "WARNING: For some reason, we couldn't adjust your httpd.conf"
-		echo "Make sure the line "
-		echo "LoadModule php5_module /usr/local/php5/libphp5.so"
-		echo "is in it";
-	fi
-else 
-	echo "LoadModule php5_module /usr/local/php5/libphp5.so"
-	echo "is already in your httpd.conf. All looks good."
+# remove the old line from httpd.conf
+sed 's/LoadModule php5_module \/usr\/local\/php5\/libphp5.so//' < /etc/apache2/httpd.conf.before-phposx > /etc/apache2/httpd.conf
+fi
+fi
+
+if [[ ! -h /etc/apache2/other/+php-osx.conf ]]
+then
+  echo "Create symlink /usr/local/php5/entropy-php.conf /etc/apache2/other/+php-osx.conf"
+  ln -s /usr/local/php5/entropy-php.conf /etc/apache2/other/+php-osx.conf
 fi
 
 # try adjusting /usr/sbin/envvars

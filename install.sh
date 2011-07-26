@@ -11,12 +11,12 @@ fi
 if [[ $TYPE != "force" ]]; then
 	OS_VERSION=`sw_vers -productVersion | grep -o 10\..`
 	if [[ $OS_VERSION == "10.7" ]]; then
-		echo "****"
-		echo "Mac OS X 10.7 Lion is not officially supported yet,"
-		echo " but it works on our test system."
-		echo "Nothing guaranteed, installing nevertheless"
-		echo "****"
-		sleep 2
+#		echo "****"
+#		echo "Mac OS X 10.7 Lion is not officially supported yet,"
+#		echo " but it works on our test system."
+#		echo "Nothing guaranteed, installing nevertheless"
+#		echo "****"
+#		sleep 2
 	elif [[ $OS_VERSION != "10.6" ]]; then
 		echo "****"
 		echo "Your version of OS X ($OS_VERSION) is not supported, you need at least 10.6"

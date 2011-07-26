@@ -63,7 +63,10 @@ padding: 0.8em;
 <a href="#install">Installation</a> | 
 <a href="#notes">Additional important notes</a> |
 <a href="#alt_installation">(Alternative) Installation by "hand" </a> |
+<a href="#alpha_installation">PHP 5.4-alpha </a> |
 <a href="#ext">Included extensions</a> |
+<a href="#uninstall">Uninstall</a> |
+
 <a href="#source">Source code</a> |
 <a href="#thanks">Thanks</a> |
 <a href="#support">Support</a>
@@ -158,6 +161,21 @@ the following line.
 sudo /usr/local/packager/packager.py install tools-frontenddev 
 
 </pre> 
+
+<h2 id="alpha_installation">PHP 5.4 alpha installation </h2>
+<p>
+We provide also binaries for the upcoming PHP 5.4 (currently alpha), some extensions are missing, due to incompatibilities. Do the following:
+
+
+</p>
+<pre>
+sudo /usr/local/packager/packager.py install alpha-frontenddev 
+
+</pre> 
+<p>(if you don't have packager.py, see above for installing it, but if you ever installed this package, you should have it)</p>
+
+
+
 <h2 id="ext">Included extensions</h2>
 <p>
 bcmath
@@ -239,6 +257,22 @@ Xdebug
 <p>See <a href="info.html">this output of phpinfo()</a> for more info.</p>
 
 
+
+
+
+<h2 id="uninstall">Uninstall</h2>
+
+<p>Change in /etc/apache2/httpd.conf</p>
+
+<pre><code>LoadModule php5_module /usr/local/php5/libphp5.so
+</code></pre>
+
+<p>to</p>
+
+<pre><code>LoadModule php5_module        libexec/apache2/libphp5.so
+</code></pre>
+
+<p>and optionally remove /usr/local/php5-*</p>
 
 
 

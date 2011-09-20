@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PHP 5.3 for OS X 10.6/10.7 as binary package</title>
+<title>PHP 5.3/5.4 for OS X 10.6/10.7 as binary package</title>
 <style>
 body {
 width: 640px;
@@ -56,14 +56,14 @@ padding: 0.8em;
 </head>
 <body>
 
-<h1> PHP 5.3 for OS X 10.6/10.7 as binary package</h1>
+<h1> PHP 5.3/5.4 for OS X 10.6/10.7 as binary package</h1>
 
 <section>
 
 <a href="#install">Installation</a> | 
 <a href="#notes">Additional important notes</a> |
 <a href="#alt_installation">(Alternative) Installation by "hand" </a> |
-<a href="#alpha_installation">PHP 5.4-alpha </a> |
+<a href="#beta_installation">PHP 5.4-beta </a> |
 <a href="#ext">Included extensions</a> |
 <a href="#uninstall">Uninstall</a> |
 
@@ -149,7 +149,7 @@ If you don't trust us, here's the code of install.sh, which you can run by yours
 </p>
 <pre>
 curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz
-sudo tar -C /  -xzf /tmp/packager.tgz
+sudo tar -C /usr/local  -xzf /tmp/packager.tgz
 sudo /usr/local/packager/packager.py install tools-frontenddev 
 </pre> 
 <p>
@@ -162,14 +162,14 @@ sudo /usr/local/packager/packager.py install tools-frontenddev
 
 </pre> 
 
-<h2 id="alpha_installation">PHP 5.4 alpha installation </h2>
+<h2 id="beta_installation">PHP 5.4 beta installation </h2>
 <p>
-We provide also binaries for the upcoming PHP 5.4 (currently alpha), some extensions are missing, due to incompatibilities. Do the following:
+We provide also binaries for the upcoming PHP 5.4 (currently beta), some extensions are missing, due to incompatibilities. Do the following:
 
 
 </p>
 <pre>
-sudo /usr/local/packager/packager.py install alpha-frontenddev 
+sudo /usr/local/packager/packager.py install beta-frontenddev 
 
 </pre> 
 <p>(if you don't have packager.py, see above for installing it, but if you ever installed this package, you should have it)</p>

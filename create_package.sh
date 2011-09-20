@@ -70,6 +70,7 @@ echo "echo 'Restarting Apache'" >>$root/pkg/post-install
 echo "/usr/sbin/apachectl configtest && /usr/sbin/apachectl restart" >>$root/pkg/post-install
 # tar the package
 cd $root
+echo "Tar the package $TYPE-$NAME-$REL.tar.bz2" 
 tar  -cjf ../$TYPE-$NAME-$REL.tar.bz2 --exclude 'share/doc/' --exclude 'man/' . || exit 1
 
 # upload to liip

@@ -6,7 +6,12 @@ ORIPWD=$PWD
 # package type (subfolder in packager)
 
 if [ -z $1 ]; then
-	TYPE=tools
+    echo "Please provide for which 'branch' this upload is.";
+	echo "tools:    stable, default branch"
+	echo "beta:     Next beta version (major releases, like 5.4 or 5.5)";
+
+	echo "53latest: Latest from 5.3 branch";
+	exit 1;
 else
     TYPE=$1
 fi

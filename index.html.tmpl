@@ -67,7 +67,7 @@ padding: 0.8em;
 <a href="#install">Installation</a> | 
 <a href="#notes">Additional important notes</a> |
 <a href="#alt_installation">(Alternative) Installation by "hand" </a> |
-<a href="#beta_installation">PHP 5.4-beta </a> |
+<a href="#beta_installation">Beta </a> |
 <a href="#ext">Included extensions</a> |
 <a href="#uninstall">Uninstall</a> |
 
@@ -76,7 +76,7 @@ padding: 0.8em;
 <a href="#support">Support</a>
 
 <h2>Intro</h2>
-<p>This package installs the (usually) latest PHP 5.3.x  on OS X 10.6 (aka Snow Leopard) and OS X 10.7 (aka Lion) in /usr/local/php5. It installs many useful extensions (see below) and ini-settings and is what we at <a href="http://www.liip.ch">Liip
+<p>This package installs the (usually) latest PHP 5.3.x/5.4.x  on OS X 10.6 (aka Snow Leopard) and OS X 10.7 (aka Lion) in /usr/local/php5. It installs many useful extensions (see below) and ini-settings and is what we at <a href="http://www.liip.ch">Liip
 </a> and <a href="http://www.local.ch">Local.ch
 </a> use for our development. It's especially suited for Symfony 2 development.
 
@@ -93,8 +93,13 @@ One Line Installation
 </h2>
 <p>All you need to do to install the whole thing is opening up a Shell and execute the following line:
 </p>
+<h3>PHP 5.3</h3>
 <pre>
-curl -s http://php-osx.liip.ch/install.sh | bash -
+curl -s http://php-osx.liip.ch/install.sh | bash -s 5.3
+</pre>
+<h3>PHP 5.4</h3>
+<pre>
+curl -s http://php-osx.liip.ch/install.sh | bash -s 5.4 
 </pre>
 <p>
 It will ask you for your password. We install the packager in /usr/local/packer and PHP into 
@@ -166,19 +171,13 @@ sudo /usr/local/packager/packager.py install tools-frontenddev
 
 </pre> 
 
-<h2 id="beta_installation">PHP 5.4 beta installation </h2>
+<h2 id="beta_installation">Beta installation </h2>
 <p>
-We provide also binaries for the upcoming PHP 5.4 (currently beta), some extensions are missing, due to incompatibilities. Do the following:
-
-
+We provide also binaries for the upcoming versions, currently PHP 5.4, some extensions are missing, due to incompatibilities. Do the following:
 </p>
 <pre>
-sudo /usr/local/packager/packager.py install beta-frontenddev 
-
-</pre> 
-<p>(if you don't have packager.py, see above for installing it, but if you ever installed this package, you should have it)</p>
-
-
+curl -s http://php-osx.liip.ch/install.sh | bash -s beta
+</pre>
 
 <h2 id="ext">Included extensions</h2>
 <p>

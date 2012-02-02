@@ -47,6 +47,16 @@ if [[ $TYPE = "force" ]]; then
 	fi
 fi
 
+if [[ $TYPE = "5.3" ]]; then
+	TYPE=tools
+fi
+
+if [[ $TYPE = "5.4" ]]; then
+	TYPE=beta
+fi
+
+
+
 echo "Get packager.tgz";
 curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz
 echo "Unpack packager.tgz";

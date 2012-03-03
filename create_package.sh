@@ -8,6 +8,7 @@ ORIPWD=$PWD
 if [ -z $1 ]; then
     echo "Please provide for which 'branch' this upload is.";
 	echo "tools:    stable, default branch"
+	echo "5.4:      5.4 stable branch"
 	echo "beta:     Next beta version (major releases, like 5.4 or 5.5)";
 
 	echo "53latest: Latest from 5.3 branch";

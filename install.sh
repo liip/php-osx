@@ -51,9 +51,9 @@ if [[ $TYPE = "5.3" ]]; then
 	TYPE=tools
 fi
 
-if [[ $TYPE = "5.4" ]]; then
-	TYPE=beta
-fi
+#if [[ $TYPE = "5.4" ]]; then
+#	TYPE=beta
+#fi
 
 
 

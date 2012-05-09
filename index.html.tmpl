@@ -129,9 +129,9 @@ The Liip php.ini for development is located in /usr/local/php5/php.d/99-liip-dev
 All installed files go in a new directory with every update, you have to manually maintain/merge your changes from the old directory! (like pear installs)
 </p>
 
-<h3>apc and xslcache</h3>
+<h3>apc,twig  and xslcache</h3>
 <p>
-apc and xslcache need to be enabled manually in /usr/local/php5/php.d/50-extension-apc.ini and /usr/local/php5/php.d/50-extension-xslcache.ini.
+apc, twig  and xslcache need to be enabled manually in /usr/local/php5/php.d/50-extension-$name.ini.
 </p>
 
 <h3>xdebug</h3>
@@ -189,6 +189,7 @@ ctype
 curl
 date
 dom
+dtrace
 ereg
 exif
 fileinfo
@@ -255,7 +256,7 @@ zip
 zlib
 Xdebug
 </p>
-<p>available but disabled by default: apc, xslcache
+<p>available but disabled by default: apc, xslcache, twig
 </p>
 <p>See <a href="info.html">this output of phpinfo()</a> for more info.</p>
 
@@ -345,4 +346,3 @@ new TWTR.Widget({
 </div>
 <h2 id="latest">Latest release
 </h2><li>
-

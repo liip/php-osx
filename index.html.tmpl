@@ -64,7 +64,7 @@ padding: 0.8em;
 
 <section>
 
-<a href="#install">Installation</a> | 
+<a href="#install">Installation</a> |
 <a href="#notes">Additional important notes</a> |
 <a href="#alt_installation">(Alternative) Installation by "hand" </a> |
 <a href="#beta_installation">Beta </a> |
@@ -99,10 +99,10 @@ curl -s http://php-osx.liip.ch/install.sh | bash -s 5.3
 </pre>
 <h3>PHP 5.4</h3>
 <pre>
-curl -s http://php-osx.liip.ch/install.sh | bash -s 5.4 
+curl -s http://php-osx.liip.ch/install.sh | bash -s 5.4
 </pre>
 <p>
-It will ask you for your password. We install the packager in /usr/local/packer and PHP into 
+It will ask you for your password. We install the packager in /usr/local/packer and PHP into
 /usr/local/php5 and for this, we need your password. We don't do anything bad with it.
 
 </p>
@@ -159,17 +159,17 @@ If you don't trust us, here's the code of install.sh, which you can run by yours
 <pre>
 curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz
 sudo tar -C /usr/local  -xzf /tmp/packager.tgz
-sudo /usr/local/packager/packager.py install tools-frontenddev 
-</pre> 
+sudo /usr/local/packager/packager.py install tools-frontenddev
+</pre>
 <p>
 If you already have installed the packager and just want to update the PHP package, you can do it with
 the following line.
 
 </p>
 <pre>
-sudo /usr/local/packager/packager.py install tools-frontenddev 
+sudo /usr/local/packager/packager.py install tools-frontenddev
 
-</pre> 
+</pre>
 
 <h2 id="beta_installation">Beta installation </h2>
 <p>
@@ -287,15 +287,15 @@ Xdebug
 </h2>
 <ul>
     <li>
-        <a href="https://github.com/liip/build-entropy-php">build-entropy-php</a>. Needed for generating the PHP binaries and all the needed libraries 
+        <a href="https://github.com/liip/build-entropy-php">build-entropy-php</a>. Needed for generating the PHP binaries and all the needed libraries
     </li>
     <li>
-        <a href="https://github.com/liip/packager">packager</a> by local.ch. This downloads and install the package on your computer. 
-    
+        <a href="https://github.com/liip/packager">packager</a> by local.ch. This downloads and install the package on your computer.
+
     </li>
     <li>
         <a href="https://github.com/liip/php-osx/">php-osx</a>. The scripts needed for doing the package and this webpage
-    
+
     </li>
 
 </ul>

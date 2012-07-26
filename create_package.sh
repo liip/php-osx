@@ -2,6 +2,7 @@
 # creates a local.ch package for the packager
 
 ORIPWD=$PWD
+OS_VERSION=`sw_vers -productVersion | grep -o 10\..`
 
 # package type (subfolder in packager)
 
@@ -17,6 +18,11 @@ else
     TYPE=$1
 fi
 
+if [[ $OS_VERSION == "10.8" ]]; then
+	TYPE="$TYPE-10.8"
+fi
+
+echo "Creating package for TYPE: $TYPE";
 
 
 # name of the package
@@ -76,7 +82,7 @@ echo "echo 'Restarting Apache'" >>$root/pkg/post-install
 echo "/usr/sbin/apachectl configtest && /usr/sbin/apachectl restart" >>$root/pkg/post-install
 # tar the package
 cd $root
-echo "Tar the package $TYPE-$NAME-$REL.tar.bz2" 
+echo "Tar the package $TYPE-$NAME-$REL.tar.bz2"
 tar  -cjf ../$TYPE-$NAME-$REL.tar.bz2 --exclude 'share/doc/' --exclude 'man/' . || exit 1
 
 # upload to liip

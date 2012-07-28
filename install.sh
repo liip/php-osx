@@ -56,12 +56,8 @@ fi
 if [[ $OS_VERSION = "10.8" ]]; then
 	if [[ $TYPE = "5.4" ]]; then
 	    TYPE=5.4-10.8
-	else
-	   echo "***"
-	   echo "On Mountain Lion 10.8, we support currently only PHP 5.4"
-	   echo "please come back later, if you want 5.3"
-	   echo "***"
-	   exit 3
+	elif [[ $TYPE = "tools" ]]; then
+	   TYPE=tools-10.8
 	fi
 fi
 #if [[ $TYPE = "5.4" ]]; then

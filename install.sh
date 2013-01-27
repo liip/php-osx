@@ -11,7 +11,7 @@ fi
 if [[ $TYPE != "force" ]]; then
 	OS_VERSION=`sw_vers -productVersion | grep -o 10\..`
 	if [[ $OS_VERSION == "10.8" ]]; then
-		echo "Detected OS X Mountain Lion 10.8. Not really tested, but we proceed."
+		echo "Detected OS X Mountain Lion 10.8. All ok."
 	elif [[ $OS_VERSION == "10.7" ]]; then
 		echo "Detected OS X Lion 10.7. All ok."
 	elif [[ $OS_VERSION == "10.6" ]]; then
@@ -56,9 +56,17 @@ fi
 if [[ $OS_VERSION = "10.8" ]]; then
 	if [[ $TYPE = "5.4" ]]; then
 	    TYPE=5.4-10.8
+	elif [[ $TYPE = "5.5" ]]; then
+	    TYPE=5.5-10.8
 	elif [[ $TYPE = "tools" ]]; then
 	   TYPE=tools-10.8
 	fi
+else 
+	if [[ $TYPE = "5.5" ]]; then
+                echo "Currently, there's no 5.5 for OS X < 10.8. Maybe there will be one, one day"
+                echo "***"
+                exit 1
+        fi
 fi
 #if [[ $TYPE = "5.4" ]]; then
 #	TYPE=beta

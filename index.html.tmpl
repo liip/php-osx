@@ -67,7 +67,7 @@ padding: 0.8em;
 <a href="#install">Installation</a> |
 <a href="#notes">Additional important notes</a> |
 <a href="#alt_installation">(Alternative) Installation by "hand" </a> |
-<a href="#beta_installation">Beta </a> |
+<!--<a href="#beta_installation">Beta </a> |-->
 <a href="#ext">Included extensions</a> |
 <a href="#uninstall">Uninstall</a> |
 
@@ -103,6 +103,10 @@ curl -s http://php-osx.liip.ch/install.sh | bash -s 5.3
 <h3>PHP 5.4</h3>
 <pre>
 curl -s http://php-osx.liip.ch/install.sh | bash -s 5.4
+</pre>
+<h3>PHP 5.5 alpha (10.8 only for now)</h3>
+<pre>
+curl -s http://php-osx.liip.ch/install.sh | bash -s 5.5
 </pre>
 <p>
 It will ask you for your password. We install the packager in /usr/local/packer and PHP into
@@ -174,6 +178,7 @@ sudo /usr/local/packager/packager.py install tools-frontenddev
 
 </pre>
 
+<!--
 <h2 id="beta_installation">Beta installation </h2>
 <p>
 We provide also binaries for the upcoming versions, currently PHP 5.4, some extensions are missing, due to incompatibilities. Do the following:
@@ -181,7 +186,7 @@ We provide also binaries for the upcoming versions, currently PHP 5.4, some exte
 <pre>
 curl -s http://php-osx.liip.ch/install.sh | bash -s beta
 </pre>
-
+-->
 <h2 id="ext">Included extensions</h2>
 <p>
 bcmath

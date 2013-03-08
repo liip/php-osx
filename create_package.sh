@@ -18,6 +18,10 @@ else
     TYPE=$1
 fi
 
+if [[ $TYPE == "5.3" ]]; then
+        TYPE="tools"
+fi
+
 if [[ $OS_VERSION == "10.8" ]]; then
 	TYPE="$TYPE-10.8"
 fi

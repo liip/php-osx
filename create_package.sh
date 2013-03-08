@@ -23,7 +23,7 @@ if [[ $TYPE == "5.3" ]]; then
 fi
 
 if [[ $OS_VERSION == "10.8" ]]; then
-	TYPE="$TYPE-ML"
+	TYPE="$TYPE-10.8"
 fi
 
 echo "Creating package for TYPE: $TYPE";

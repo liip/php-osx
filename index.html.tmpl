@@ -65,7 +65,9 @@ padding: 0.8em;
 <section>
 
 <a href="#install">Installation</a> |
+<a href="#faq">FAQ</a> |
 <a href="#notes">Additional important notes</a> |
+
 <a href="#alt_installation">(Alternative) Installation by "hand" </a> |
 <!--<a href="#beta_installation">Beta </a> |-->
 <a href="#ext">Included extensions</a> |
@@ -86,7 +88,7 @@ in /usr/local/php5. It installs many useful extensions (see below) and ini-setti
 It also provides a decent php.ini with all settings configured according to "Best Practices".
 
 </p>
-<p>It doesn't install Apache, MySQL or any other external programs. It uses the Apache installation, which comes with OS X and for installing MySQL you can for example use 
+<p>It doesn't install Apache, MySQL or any other external programs. It uses the Apache installation, which comes with OS X and for installing MySQL you can for example use
 <a href="http://mxcl.github.com/homebrew/">Homebrew</a>. The package is based on <a href="http://www.entropy.ch/software/macosx/php/">entropy's php package
 </a>.
 </p>
@@ -115,6 +117,42 @@ It will ask you for your password. We install the packager in /usr/local/packer 
 </p>
 
 
+<h2 id="faq">Frequently Asked Questions</h2>
+
+<h3>Why does php -v on the command line still show my old version?</h3>
+<p>php-osx doesn't overwrite the php binaries installed by Apple, but installs everyting in /usr/local/php5.
+The new php binary is therefore in /usr/local/php5/bin/php.</p>
+
+<p>You can also adjust your PATH do include that directory, eg. write into your ~/.profile file the following
+<pre>
+export PATH=/usr/local/php5/bin:$PATH
+</pre>
+</p>
+<h3> Why is Europe/Zurich the default timezone? Where to change that?</h3>
+
+<p>Because we are based in Zurich (and Fribourg and Lausanne). Change the file in <tt>/usr/local/php5/php.d/99-liip-developer.ini</tt> to adjust that.</p>
+
+
+<h3>It doesn't take my php.ini values</h3>
+
+<p>We introduced our own ini file to be able to easily overwrite the standard values with our recommended values. You can find it in <tt>/usr/local/php5/php.d/99-liip-developer.ini </tt>
+</p>
+<p>As this is read last, it will overwrite values defined in other files. You can also just delete the file.</p>
+
+<h3>How can I help?</h3>
+
+<p>This project is hosted on github here <a href="https://github.com/liip/build-entropy-php/">https://github.com/liip/build-entropy-php/</a>. The website itself and install.sh
+is hosted on <a href="https://github.com/liip/php-osx/">https://github.com/liip/php-osx/</a>.
+It's all Open Source, so feel free to fork it and send Pull Requests, if you want to change/fix something.</p>
+
+<h3> I have more questions. Where to put them?</h3>
+
+<p>You have basically three options:
+<ul>
+<li>Open a ticket at <a href="https://github.com/liip/php-osx/issues">https://github.com/liip/php-osx/issues</a></li>
+<li>Write a tweet, we monitor that and are reachable at <a href="http://twitter.com/php_osx">@php_osx</a></li>
+<li>Write on Stack Overflow with the tag "<a href="http://stackoverflow.com/questions/tagged/php-osx">php-osx</a>". We do monitor that, as well</a></li>
+</ul>
 
 <h2 id="notes">Additional important notes</h2>
 

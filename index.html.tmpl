@@ -139,6 +139,11 @@ export PATH=/usr/local/php5/bin:$PATH
 </p>
 <p>As this is read last, it will overwrite values defined in other files. You can also just delete the file.</p>
 
+<h3>Why is the MySQL Socket configured to use /tmp/mysql.sock and how to change that?</h3>
+
+<p>If you download the native binary from mysql.com, that server uses /tmp/mysql.sock as its socket location (see <a href="http://dev.mysql.com/doc/refman/5.5/en/macosx-installation-pkg.html">this</a>). Therefore we choose that value as default.</p>
+<p>You can change that value in <tt>/usr/local/php5/php.d/99-liip-developer.ini </tt></p>
+
 <h3>How can I help?</h3>
 
 <p>This project is hosted on github here <a href="https://github.com/liip/build-entropy-php/">https://github.com/liip/build-entropy-php/</a>. The website itself and install.sh

@@ -144,6 +144,13 @@ export PATH=/usr/local/php5/bin:$PATH
 <p>If you download the native binary from mysql.com, that server uses /tmp/mysql.sock as its socket location (see <a href="http://dev.mysql.com/doc/refman/5.5/en/macosx-installation-pkg.html">this</a>). Therefore we choose that value as default.</p>
 <p>You can change that value in <tt>/usr/local/php5/php.d/99-liip-developer.ini </tt></p>
 
+<h3>Where is the memcached daemon?</h3>
+
+<p>We started not including the memcached daemon anymore. But you can install it by hand with</p>
+<pre>
+ sudo /usr/local/packager/packager.py install tools-memcached
+</pre>
+
 <h3>How can I help?</h3>
 
 <p>This project is hosted on github here <a href="https://github.com/liip/build-entropy-php/">https://github.com/liip/build-entropy-php/</a>. The website itself and install.sh
@@ -209,7 +216,7 @@ If you don't trust us, here's the code of install.sh, which you can run by yours
 <pre>
 curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz
 sudo tar -C /usr/local  -xzf /tmp/packager.tgz
-sudo /usr/local/packager/packager.py install tools-frontenddev
+sudo /usr/local/packager/packager.py install 5.4-frontenddev
 </pre>
 <p>
 If you already have installed the packager and just want to update the PHP package, you can do it with

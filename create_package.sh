@@ -64,7 +64,7 @@ cp -R /usr/local/php5 $root/usr/local/php5-$REL
 mkdir $root/pkg
 echo "name: $TYPE-$NAME
 version: $REL
-depends: tools-memcached
+#depends: tools-memcached
 " >$root/pkg/info
 
 

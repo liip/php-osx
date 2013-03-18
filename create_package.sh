@@ -114,5 +114,11 @@ php uploadFile.php install.sh install.sh "text/plain"
 #scp ../$TYPE-$NAME-$REL.tar.gz $USER@dev2.liip.ch:/home/liip/dev2/install/$TYPE/$NAME/
 #ssh -l $USER dev2.liip.ch "ln -sf ../${TYPE}/${NAME}/${TYPE}-${NAME}-${REL}.tar.gz /home/liip/dev2/install/www/${TYPE}-${NAME}.tar.gz"
 
+ODIR=$PWD
+cd ../build-entropy-php/
+git tag $REL-$TYPE
+cd $ODIR
+
 echo "done ..."
+
 

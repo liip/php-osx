@@ -84,8 +84,17 @@ cat  update_httpd_conf.sh >> $root/pkg/post-install
 echo "# restart apache" >>$root/pkg/post-install
 echo "echo 'Restarting Apache'" >>$root/pkg/post-install
 echo "/usr/sbin/apachectl configtest && /usr/sbin/apachectl restart" >>$root/pkg/post-install
+
+echo "Tag the release"
+ODIR=$PWD
+cd ../build-entropy-php/
+git tag $REL-$TYPE
+cd $ODIR
+
+
 # tar the package
 cd $root
+
 echo "Tar the package $TYPE-$NAME-$REL.tar.bz2"
 tar  -cjf ../$TYPE-$NAME-$REL.tar.bz2 --exclude 'share/doc/' --exclude 'man/' . || exit 1
 
@@ -113,11 +122,6 @@ php uploadFile.php install.sh install.sh "text/plain"
 
 #scp ../$TYPE-$NAME-$REL.tar.gz $USER@dev2.liip.ch:/home/liip/dev2/install/$TYPE/$NAME/
 #ssh -l $USER dev2.liip.ch "ln -sf ../${TYPE}/${NAME}/${TYPE}-${NAME}-${REL}.tar.gz /home/liip/dev2/install/www/${TYPE}-${NAME}.tar.gz"
-
-ODIR=$PWD
-cd ../build-entropy-php/
-git tag $REL-$TYPE
-cd $ODIR
 
 echo "done ..."
 

@@ -3,17 +3,15 @@
 
 ORIPWD=$PWD
 OS_VERSION=`sw_vers -productVersion | grep -o 10\..`
+PHP_VERSION=`/usr/local/php5/bin/php -v | head -1`
+PHP_VERSION_FULL=`echo $PHP_VERSION | egrep -o  '5\.[0-9]+\.[0-9][^ ]*' `
+PHP_VERSION_MAJOR=`echo $PHP_VERSION_FULL | egrep -o  '5\.[0-9]+'`
 
 # package type (subfolder in packager)
 
 if [ -z $1 ]; then
-    echo "Please provide for which 'branch' this upload is.";
-	echo "tools:    stable, default branch"
-	echo "5.4:      5.4 stable branch"
-	echo "beta:     Next beta version (major releases, like 5.4 or 5.5)";
-
-	echo "53latest: Latest from 5.3 branch";
-	exit 1;
+	TYPE=$PHP_VERSION_MAJOR
+	echo "Guessing PHP Version: " $TYPE;
 else
     TYPE=$1
 fi
@@ -32,7 +30,9 @@ echo "Creating package for TYPE: $TYPE";
 # name of the package
 NAME=frontenddev
 # create a revision
-REL=$(date +%Y%m%d-%H%M%S)
+REL=${PHP_VERSION_FULL}-$(date +%Y%m%d-%H%M%S)
+
+
 # root folder for the package creation
 root="/tmp/$NAME-package"
 

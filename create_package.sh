@@ -11,14 +11,14 @@ PHP_VERSION_MAJOR=`echo $PHP_VERSION_FULL | egrep -o  '5\.[0-9]+'`
 
 if [ -z $1 ]; then
 	TYPE=$PHP_VERSION_MAJOR
-	echo "Guessing PHP Version: " $TYPE;
+	echo "Guessing PHP Version:" $TYPE;
 else
     TYPE=$1
 fi
 
-if [[ $TYPE == "5.3" ]]; then
-        TYPE="tools"
-fi
+#if [[ $TYPE == "5.3" ]]; then
+#        TYPE="tools"
+#fi
 
 if [[ $OS_VERSION == "10.8" ]]; then
 	TYPE="$TYPE-10.8"

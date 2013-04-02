@@ -3,7 +3,7 @@
 # package type (subfolder in packager)
 
 if [ -z $1 ]; then
-	TYPE=tools
+	TYPE=5.3
 else
     TYPE=$1
 fi
@@ -43,14 +43,10 @@ fi
 
 if [[ $TYPE = "force" ]]; then
 	if [ -z $2 ]; then
-		TYPE=tools
+		TYPE=5.3
 	else
 		TYPE=$2
 	fi
-fi
-
-if [[ $TYPE = "5.3" ]]; then
-	TYPE=tools
 fi
 
 if [[ $OS_VERSION = "10.8" ]]; then
@@ -58,8 +54,8 @@ if [[ $OS_VERSION = "10.8" ]]; then
 	    TYPE=5.4-10.8
 	elif [[ $TYPE = "5.5" ]]; then
 	    TYPE=5.5-10.8
-	elif [[ $TYPE = "tools" ]]; then
-	   TYPE=tools-10.8
+	elif [[ $TYPE = "5.3" ]]; then
+	   TYPE=5.3-10.8
 	fi
 fi
 #if [[ $TYPE = "5.4" ]]; then

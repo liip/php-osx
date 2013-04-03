@@ -34,6 +34,7 @@ cd ../build-entropy-php
 
 run git co ${PHP_VERSION_UNDERSCORE}_$OSNAME
 run git rebase
+run sudo bash ./deletePeclSources.sh
 
 run sudo bash ./build-php.sh
 

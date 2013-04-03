@@ -9,11 +9,16 @@ PHP_VERSION_MAJOR=`echo $PHP_VERSION_FULL | egrep -o  '5\.[0-9]+'`
 
 # package type (subfolder in packager)
 
+TYPE=$PHP_VERSION_MAJOR
+echo "Detected PHP Version:" $TYPE;
+
 if [ -z $1 ]; then
-	TYPE=$PHP_VERSION_MAJOR
-	echo "Guessing PHP Version:" $TYPE;
+	echo ""
 else
-    TYPE=$1
+    if [[ $1 != $PHP_VERSION_MAJOR ]]; then
+		echo "$1 and installed php version ($PHP_VERSION_MAJOR) mismatch. Aborting"
+		exit 2;
+	fi
 fi
 
 #if [[ $TYPE == "5.3" ]]; then

@@ -30,7 +30,7 @@ PHP_VERSION_UNDERSCORE=$(echo $PHP_VERSION | sed -e 's/\./_/g')
 
 cd ../build-entropy-php
 
-#git remote update
+run git remote update
 
 run git co ${PHP_VERSION_UNDERSCORE}_$OSNAME
 run git rebase

@@ -33,7 +33,7 @@ cd ../build-entropy-php
 run git remote update
 
 run git co ${PHP_VERSION_UNDERSCORE}_$OSNAME
-run git rebase
+run git rebase origin/${PHP_VERSION_UNDERSCORE}_$OSNAME
 run sudo bash ./deletePeclSources.sh
 
 run sudo bash ./build-php.sh

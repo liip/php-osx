@@ -13,7 +13,7 @@ run() {
 
 OS_VERSION=`sw_vers -productVersion | grep -o 10\..`
 
-if [[ $OS_VERSION == "10.8" ]]; then
+if [[ $OS_VERSION == "10.8" || [[ $OS_VERSION = "10.9" ]]; then
 	OSNAME="mountainlion"
 else
 	OSNAME="snowleopard"

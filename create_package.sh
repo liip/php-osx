@@ -118,7 +118,9 @@ php uploadFile.php $root/../install/$TYPE-$NAME-latest.dat install/$TYPE-$NAME-l
 
 tar -czf /tmp/packager.tgz packager && php uploadFile.php /tmp/packager.tgz packager/packager.tgz "application/x-gzip"
 
-echo "$TYPE-$NAME-$REL</li></ul> </body></html>" > index.html.bottom
+echo "Get latest uploaded versions on S3\n";
+php getLatestVersions.php > index.html.bottom
+echo "</pre></body></html>" >> index.html.bottom
 cat index.html.tmpl index.html.bottom > index.html
 
 

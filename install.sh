@@ -56,13 +56,16 @@ if [[ $OS_VERSION = "10.8" ]] || [[ $OS_VERSION = "10.9" ]]; then
 	    TYPE=5.4-10.8
 	elif [[ $TYPE = "5.5" ]]; then
 	    TYPE=5.5-10.8
+	elif [[ $TYPE = "5.6" ]]; then
+	    TYPE=5.6-10.8
 	elif [[ $TYPE = "5.3" ]]; then
 	   TYPE=5.3-10.8
 	fi
 fi
-#if [[ $TYPE = "5.4" ]]; then
-#	TYPE=beta
-#fi
+if [[ $TYPE = "5.6" ]]; then
+	echo "PHP 5.6 is nota available yet for OS X < 10.8"
+	exit 1
+fi
 
 
 

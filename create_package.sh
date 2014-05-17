@@ -74,7 +74,7 @@ version: $REL
 
 
 echo "downloading latest php.ini-liip"
-curl https://svn.liip.ch/repos/public/misc/php-ini/php.ini-development >> $root/usr/local/php5-$REL/php.d/99-liip-developer.ini
+curl -k https://svn.liip.ch/repos/public/misc/php-ini/php.ini-development >> $root/usr/local/php5-$REL/php.d/99-liip-developer.ini
 
 # generate post-initial (executed only on the inital, first installation)
 cp deploy/post-initial $root/pkg/post-initial

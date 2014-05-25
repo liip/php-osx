@@ -150,6 +150,12 @@ export PATH=/usr/local/php5/bin:$PATH
 <p>If you download the native binary from mysql.com, that server uses /tmp/mysql.sock as its socket location (see <a href="http://dev.mysql.com/doc/refman/5.5/en/macosx-installation-pkg.html">this</a>). Therefore we choose that value as default.</p>
 <p>You can change that value in <tt>/usr/local/php5/php.d/99-liip-developer.ini </tt></p>
 
+<h3>How to install pecl extensions?</h3>
+
+<pre>
+sudo /usr/local/php5/bin/pecl install pecl_http
+</pre>
+
 <h3>Where is the memcached daemon?</h3>
 
 <p>We started not including the memcached daemon anymore. But you can install it by hand with</p>

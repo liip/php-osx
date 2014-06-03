@@ -10,7 +10,9 @@ fi
 
 if [[ $TYPE != "force" ]]; then
 	OS_VERSION=`sw_vers -productVersion | grep -o 10\..`
-	if [[ $OS_VERSION == "10.9" ]]; then
+	if [[ $OS_VERSION == "10.1" ]]; then
+		echo "Detected OS X Yosemite 10.10. All ok."
+	elif [[ $OS_VERSION == "10.9" ]]; then
 		echo "Detected OS X Mavericks 10.9. All ok."
 	elif [[ $OS_VERSION == "10.8" ]]; then
 		echo "Detected OS X Mountain Lion 10.8. All ok."
@@ -18,6 +20,7 @@ if [[ $TYPE != "force" ]]; then
 		echo "Detected OS X Lion 10.7. All ok."
 	elif [[ $OS_VERSION == "10.6" ]]; then
 		echo "Detected OS X Snow Leopard 10.6. All ok."
+		
 	else
 		echo "****"
 		echo "Your version of OS X ($OS_VERSION) is not supported, you need at least 10.6"

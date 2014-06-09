@@ -11,9 +11,11 @@ print getObject('5.5-10.10');
 print getObject('5.5-10.8');
 print getObject('5.5');
 print "\n";
+print getObject('5.4-10.10');
 print getObject('5.4-10.8');
 print getObject('5.4');
 print "\n";
+print getObject('5.3-10.10');
 print getObject('5.3-10.8');
 print getObject('5.3');
 
@@ -36,6 +38,9 @@ function getObject($src) {
         }
         if ($matches[2] == "10.8") {
             $matches[2] = "10.8/10.9";
+        }
+        if ($matches[2] == "10.10") {
+            $matches[2] = "10.10";
         }
         preg_match("/([0-9]{4})([0-9]{2})([0-9]{2})/",$matches[4],$date);
         $text = "PHP " . $matches[3] . " for OS X " . $matches[2] . " uploaded at " . $date[1] ."-" . $date[2] . "-" . $date[3]  ."\n";

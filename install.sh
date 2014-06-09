@@ -71,16 +71,12 @@ fi
 
 if [[ $OS_VERSION = "10.10" ]]; then
 	if [[ $TYPE = "5.4" ]]; then
-	    echo "PHP 5.4 is not available yet for OS X 10.10"
-        exit 1
 	    TYPE=5.4-10.10
 	elif [[ $TYPE = "5.5" ]]; then
 	    TYPE=5.5-10.10
 	elif [[ $TYPE = "5.6" ]]; then
         TYPE=5.6-10.10
 	elif [[ $TYPE = "5.3" ]]; then
-        echo "PHP 5.3 is not available yet for OS X 10.10"
-        exit 1
         TYPE=5.3-10.10
 	fi
 fi

@@ -13,7 +13,7 @@ if [[ $TYPE != "force" ]]; then
 	if [[ $OS_VERSION == "10.10" ]]; then
 		echo "****"
 		echo "[WARNING]"
-		echo "Detected OS X Yosemite 10.10. This is not supported yet. There are known issues. Your mileage may vary."
+		echo "Detected OS X Yosemite 10.10. This is not supported yet. Your mileage may vary."
 		echo "****"
 		sleep 2
 	elif [[ $OS_VERSION == "10.9" ]]; then
@@ -77,8 +77,6 @@ if [[ $OS_VERSION = "10.10" ]]; then
 	elif [[ $TYPE = "5.5" ]]; then
 	    TYPE=5.5-10.10
 	elif [[ $TYPE = "5.6" ]]; then
-        echo "PHP 5.6 is not available yet for OS X 10.10"
-        exit 1
         TYPE=5.6-10.10
 	elif [[ $TYPE = "5.3" ]]; then
         echo "PHP 5.3 is not available yet for OS X 10.10"

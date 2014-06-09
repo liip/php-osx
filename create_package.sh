@@ -2,7 +2,7 @@
 # creates a local.ch package for the packager
 
 ORIPWD=$PWD
-OS_VERSION=`sw_vers -productVersion | grep -o 10\..`
+OS_VERSION=`sw_vers -productVersion | egrep -o '10\.[0-9]+'`
 PHP_VERSION=`/usr/local/php5/bin/php -v | head -1`
 PHP_VERSION_FULL=`echo $PHP_VERSION | egrep -o  '5\.[0-9]+\.[0-9][^ ]*' `
 PHP_VERSION_MAJOR=`echo $PHP_VERSION_FULL | egrep -o  '5\.[0-9]+'`
@@ -27,6 +27,8 @@ fi
 
 if [[ $OS_VERSION == "10.8" ]]; then
 	TYPE="$TYPE-10.8"
+elif [[ $OS_VERSION == "10.10" ]]; then
+	TYPE="$TYPE-10.10"
 fi
 
 echo "Creating package for TYPE: $TYPE";

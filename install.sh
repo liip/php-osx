@@ -77,6 +77,13 @@ if [[ $OS_VERSION = "10.10" ]]; then
 	elif [[ $TYPE = "5.6" ]]; then
         TYPE=5.6-10.10
 	elif [[ $TYPE = "5.3" ]]; then
+        echo "PHP 5.3 not supported on OS X 10.10 yet"
+        echo "******"
+        echo "We couldn't compile PHP 5.3 on 10.10 initially."
+        echo "And since it's not supported anymore anyway, we decided to not put any further effort in this"
+        echo "If you really need it, we can give it another try."
+        echo "Please open a ticket at https://github.com/liip/php-osx/issues/new."
+        exit 1
         TYPE=5.3-10.10
 	fi
 fi

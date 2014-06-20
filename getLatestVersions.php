@@ -32,7 +32,7 @@ function getObject($src) {
 
 
     if ($response->isOK()) {
-        preg_match("/([5-9]\.[0-9]+)-(10\.[0-9]+){0,1}-*frontenddev-([0-9\.(alphabeta)]+)-([0-9]+)/",$response->body,$matches);
+        preg_match("/([5-9]\.[0-9]+)-(10\.[0-9]+){0,1}-*frontenddev-([0-9\.(alphabetaRC)]+)-([0-9]+)/",$response->body,$matches);
         if ($matches[2] == "") {
             $matches[2] = "10.6/10.7";
         }

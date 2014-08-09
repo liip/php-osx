@@ -4,7 +4,7 @@ if [[ -n $SEARCH ]]
 then
 #deactivate php5_module in httpd.conf
 apxs -e -A -n php5 libphp5.so 2> /dev/null
-#search of there's an old entry to /usr/local/php5/libphp5.so in httpd.conf 
+#search of there's an old entry to /usr/local/php5/libphp5.so in httpd.conf
 SEARCH2=`grep /usr/local/php5/libphp5.so /etc/apache2/httpd.conf `
 if [[ -n $SEARCH2 ]]
 then
@@ -14,10 +14,20 @@ sed 's/LoadModule php5_module \/usr\/local\/php5\/libphp5.so//' < /etc/apache2/h
 fi
 fi
 
-if [[ ! -h /etc/apache2/other/+php-osx.conf ]]
+# OS X 10.6 doesn't have an other directoty
+if [[ -d /etc/apache2/other ]]
 then
-  echo "Create symlink /usr/local/php5/entropy-php.conf /etc/apache2/other/+php-osx.conf"
-  ln -s /usr/local/php5/entropy-php.conf /etc/apache2/other/+php-osx.conf
+    if [[ ! -h /etc/apache2/other/+php-osx.conf ]]
+    then
+      echo "Create symlink /usr/local/php5/entropy-php.conf /etc/apache2/other/+php-osx.conf"
+      ln -s /usr/local/php5/entropy-php.conf /etc/apache2/other/+php-osx.conf
+    fi
+else
+    if [[ ! -h /etc/apache2/sites/+php-osx.conf ]]
+    then
+      echo "Create symlink /usr/local/php5/entropy-php.conf /etc/apache2/sites/+php-osx.conf"
+      ln -s /usr/local/php5/entropy-php.conf /etc/apache2/sites/+php-osx.conf
+    fi
 fi
 
 # try adjusting /usr/sbin/envvars

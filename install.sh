@@ -2,10 +2,13 @@
 
 # package type (subfolder in packager)
 
+# default version to install
+DEFAULT=5.3
+
 if [ -z $1 ]; then
-	TYPE=5.3
+	TYPE=$DEFAULT
 else
-    TYPE=$1
+	TYPE=$1
 fi
 
 if [[ $TYPE != "force" ]]; then
@@ -51,7 +54,7 @@ fi
 
 if [[ $TYPE = "force" ]]; then
 	if [ -z $2 ]; then
-		TYPE=5.3
+		TYPE=$DEFAULT
 	else
 		TYPE=$2
 	fi
@@ -59,11 +62,11 @@ fi
 
 if [[ $OS_VERSION = "10.8" ]] || [[ $OS_VERSION = "10.9" ]]; then
 	if [[ $TYPE = "5.4" ]]; then
-	    TYPE=5.4-10.8
+		TYPE=5.4-10.8
 	elif [[ $TYPE = "5.5" ]]; then
-	    TYPE=5.5-10.8
+		TYPE=5.5-10.8
 	elif [[ $TYPE = "5.6" ]]; then
-	    TYPE=5.6-10.8
+		TYPE=5.6-10.8
 	elif [[ $TYPE = "5.3" ]]; then
 	   TYPE=5.3-10.8
 	fi
@@ -71,20 +74,20 @@ fi
 
 if [[ $OS_VERSION = "10.10" ]]; then
 	if [[ $TYPE = "5.4" ]]; then
-	    TYPE=5.4-10.10
+		TYPE=5.4-10.10
 	elif [[ $TYPE = "5.5" ]]; then
-	    TYPE=5.5-10.10
+		TYPE=5.5-10.10
 	elif [[ $TYPE = "5.6" ]]; then
-        TYPE=5.6-10.10
+		TYPE=5.6-10.10
 	elif [[ $TYPE = "5.3" ]]; then
-        echo "PHP 5.3 not supported on OS X 10.10 yet"
-        echo "******"
-        echo "We couldn't compile PHP 5.3 on 10.10 initially."
-        echo "And since it's not supported anymore anyway, we decided to not put any further effort in this"
-        echo "If you really need it, we can give it another try."
-        echo "Please open a ticket at https://github.com/liip/php-osx/issues/new."
-        exit 1
-        TYPE=5.3-10.10
+		echo "PHP 5.3 not supported on OS X 10.10 yet"
+		echo "******"
+		echo "We couldn't compile PHP 5.3 on 10.10 initially."
+		echo "And since it's not supported anymore anyway, we decided to not put any further effort in this"
+		echo "If you really need it, we can give it another try."
+		echo "Please open a ticket at https://github.com/liip/php-osx/issues/new."
+		exit 1
+		TYPE=5.3-10.10
 	fi
 fi
 
@@ -97,10 +100,12 @@ fi
 
 echo "Get packager.tgz";
 curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz
+
 echo "Unpack packager.tgz";
 echo "Please type in your password, as we want to install this into /usr/local"
-if [ !  -d /usr/local ] ; then sudo mkdir /usr/local; fi
+if [ !  -d /usr/local ] ; then sudo mkdir /usr/local; fi	
 sudo  tar -C /usr/local -xzf /tmp/packager.tgz
+
 echo "Start packager (may take some time)";
 sudo /usr/local/packager/packager.py install $TYPE-frontenddev
 cd $ORIPWD

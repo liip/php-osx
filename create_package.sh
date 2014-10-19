@@ -90,7 +90,7 @@ echo "cp /usr/local/php5/lib/php.ini-development /usr/local/php5/lib/php.ini" >>
 cat  update_httpd_conf.sh >> $root/pkg/post-install
 echo "# restart apache" >>$root/pkg/post-install
 echo "echo 'Restarting Apache'" >>$root/pkg/post-install
-echo "/usr/sbin/apachectl configtest && /usr/sbin/apachectl restart" >>$root/pkg/post-install
+echo "/usr/sbin/httpd -t && /usr/sbin/apachectl restart" >>$root/pkg/post-install
 
 echo "Tag the release"
 ODIR=$PWD

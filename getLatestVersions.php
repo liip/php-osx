@@ -15,7 +15,7 @@ print getObject('5.4-10.10');
 print getObject('5.4-10.8');
 print getObject('5.4');
 print "\n";
-#print getObject('5.3-10.10');
+print getObject('5.3-10.10');
 print getObject('5.3-10.8');
 print getObject('5.3');
 

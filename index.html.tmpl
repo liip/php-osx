@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PHP 5.6/5.5/5.4/5.3 for OS X 10.6/10.7/10.8/10.9/10.10 as binary package</title>
 <style>
 body {
-width: 640px;
+max-width: 640px;
 margin: 0;
 }
 
@@ -13,7 +14,7 @@ h1 {
 background-color: #39271c;
 color: #fff;
 font-weight: normal;
-padding: 50px 180px 15px 15px;
+padding: 50px 30px 15px 15px;
 margin: 0;
 border-left:  4px solid #00c4e4;
 }
@@ -37,11 +38,20 @@ color: #6b8589;
 pre {
 border: dotted black 1px ;
 padding: 0.8em;
+overflow: scroll;
 }
 
 .logos a {
     display: inline-block;
     margin: 5px 40px 5px 0;
+}
+
+@media only screen and (min-width : 992px) {
+    .twitter {
+        position: absolute;
+        top: 195px;
+        left: 660px;
+    }
 }
 </style>
 <script>
@@ -384,7 +394,7 @@ Thanks to Local.ch, which made all the groundwork for this. And thanks to Liip (
 We can't provide support for this, but Pull Requests are always welcome. And use the <a href="https://github.com/liip/php-osx/issues">github issues page
 </a> for filing bug reports.
 </p>
-<div style="position: absolute; top: 195px; left: 660px;"><script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<div class="twitter"><script src="http://widgets.twimg.com/j/2/widget.js"></script>
 <a class="twitter-timeline" href="https://twitter.com/php_osx" data-widget-id="476656214785290240">Tweets by @php_osx</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 

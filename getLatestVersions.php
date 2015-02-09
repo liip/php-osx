@@ -4,6 +4,8 @@
 require_once 'AWSSDKforPHP/sdk.class.php';
 include("config.inc.php");
 
+print getObject('7.0-10.10');
+print "\n";
 print getObject('5.6-10.10');
 print getObject('5.6-10.8');
 print "\n";

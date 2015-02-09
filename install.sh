@@ -79,6 +79,8 @@ if [[ $OS_VERSION = "10.10" ]]; then
 		TYPE=5.5-10.10
 	elif [[ $TYPE = "5.6" ]]; then
 		TYPE=5.6-10.10
+	elif [[ $TYPE = "7.0" ]]; then
+		TYPE=7.0-10.10
 	elif [[ $TYPE = "5.3" ]]; then
 		TYPE=5.3-10.10
 	fi
@@ -86,6 +88,9 @@ fi
 
 if [[ $TYPE = "5.6" ]]; then
 	echo "PHP 5.6 is not available yet for OS X < 10.8"
+	exit 1
+elif [[ $TYPE = "7.0" ]]; then
+	echo "PHP 7.0 is not available yet for OS X < 10.10"
 	exit 1
 fi
 
@@ -96,7 +101,7 @@ curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz
 
 echo "Unpack packager.tgz";
 echo "Please type in your password, as we want to install this into /usr/local"
-if [ !  -d /usr/local ] ; then sudo mkdir /usr/local; fi	
+if [ !  -d /usr/local ] ; then sudo mkdir /usr/local; fi
 sudo  tar -C /usr/local -xzf /tmp/packager.tgz
 
 echo "Start packager (may take some time)";

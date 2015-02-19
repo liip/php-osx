@@ -4,8 +4,8 @@
 ORIPWD=$PWD
 OS_VERSION=`sw_vers -productVersion | egrep -o '10\.[0-9]+'`
 PHP_VERSION=`/usr/local/php5/bin/php -v | head -1`
-PHP_VERSION_FULL=`echo $PHP_VERSION | egrep -o  '5\.[0-9]+\.[0-9][^ ]*' `
-PHP_VERSION_MAJOR=`echo $PHP_VERSION_FULL | egrep -o  '5\.[0-9]+'`
+PHP_VERSION_FULL=`echo $PHP_VERSION | egrep -o  '[5-9]\.[0-9]+\.[0-9][^ ]*' `
+PHP_VERSION_MAJOR=`echo $PHP_VERSION_FULL | egrep -o  '[5-9]\.[0-9]+'`
 
 # package type (subfolder in packager)
 

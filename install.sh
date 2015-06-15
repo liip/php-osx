@@ -3,7 +3,7 @@
 # package type (subfolder in packager)
 
 # default version to install
-DEFAULT=5.3
+DEFAULT=5.6
 
 if [ -z $1 ]; then
 	TYPE=$DEFAULT
@@ -13,7 +13,13 @@ fi
 
 if [[ $TYPE != "force" ]]; then
 	OS_VERSION=`sw_vers -productVersion | egrep -o '10\.[0-9]+'`
-	if [[ $OS_VERSION == "10.10" ]]; then
+	if [[ $OS_VERSION == "10.11" ]]; then
+		echo "****"
+		echo "[WARNING]"
+		echo "Detected OS X El Capitan 10.11. As this is quite new, there may be issues still. Your mileage may vary."
+		echo "****"
+		sleep 2
+	elif [[ $OS_VERSION == "10.10" ]]; then
 		echo "****"
 		echo "[WARNING]"
 		echo "Detected OS X Yosemite 10.10. As this is quite new, there may be issues still. Your mileage may vary."
@@ -69,6 +75,22 @@ if [[ $OS_VERSION = "10.8" ]] || [[ $OS_VERSION = "10.9" ]]; then
 		TYPE=5.6-10.8
 	elif [[ $TYPE = "5.3" ]]; then
 	   TYPE=5.3-10.8
+	fi
+fi
+
+# 10.11 should be compatible with 10.10 versions for now.
+# See https://github.com/liip/build-entropy-php/issues/16 for more
+if [[ $OS_VERSION = "10.11" ]]; then
+	if [[ $TYPE = "5.4" ]]; then
+		TYPE=5.4-10.10
+	elif [[ $TYPE = "5.5" ]]; then
+		TYPE=5.5-10.10
+	elif [[ $TYPE = "5.6" ]]; then
+		TYPE=5.6-10.10
+	elif [[ $TYPE = "7.0" ]]; then
+		TYPE=7.0-10.10
+	elif [[ $TYPE = "5.3" ]]; then
+		TYPE=5.3-10.10
 	fi
 fi
 

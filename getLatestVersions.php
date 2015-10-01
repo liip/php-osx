@@ -36,13 +36,13 @@ function getObject($src) {
     if ($response->isOK()) {
         preg_match("/([5-9]\.[0-9]+)-(10\.[0-9]+){0,1}-*frontenddev-([0-9\.(alphabetaRC\-dev)]+)-([0-9]{8})-([0-9]+)/",$response->body,$matches);
         if ($matches[2] == "") {
-            $matches[2] = "10.6/10.7";
+            $matches[2] = "10.6/10.7  ";
         }
         if ($matches[2] == "10.8") {
-            $matches[2] = "10.8/10.9";
+            $matches[2] = "10.8/10.9  ";
         }
         if ($matches[2] == "10.10") {
-            $matches[2] = "10.10    ";
+            $matches[2] = "10.10/10.11";
         }
         preg_match("/([0-9]{4})([0-9]{2})([0-9]{2})/",$matches[4],$date);
         $text = "PHP " . $matches[3] . " for OS X " . $matches[2] . " uploaded at " . $date[1] ."-" . $date[2] . "-" . $date[3]  ."\n";

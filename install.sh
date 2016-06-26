@@ -13,7 +13,13 @@ fi
 
 if [[ $TYPE != "force" ]]; then
 	OS_VERSION=`sw_vers -productVersion | egrep -o '10\.[0-9]+'`
-	if [[ $OS_VERSION == "10.11" ]]; then
+	if [[ $OS_VERSION == "10.12" ]]; then
+		echo "****"
+		echo "[WARNING]"
+		echo "Detected macOS Sierra 10.12. As this is quite new, there may be issues still. Your mileage may vary."
+		echo "****"
+		sleep 2
+	elif [[ $OS_VERSION == "10.11" ]]; then
 		echo "****"
 		echo "[WARNING]"
 		echo "Detected OS X El Capitan 10.11. As this is quite new, there may be issues still. Your mileage may vary."
@@ -78,9 +84,9 @@ if [[ $OS_VERSION = "10.8" ]] || [[ $OS_VERSION = "10.9" ]]; then
 	fi
 fi
 
-# 10.11 should be compatible with 10.10 versions for now.
+# 10.11 & 10.12 should be compatible with 10.10 versions for now.
 # See https://github.com/liip/build-entropy-php/issues/16 for more
-if [[ $OS_VERSION = "10.11" ]]; then
+if [[ $OS_VERSION = "10.11" ]] || [[ $OS_VERSION = "10.12" ]]; then
 	if [[ $TYPE = "5.4" ]]; then
 		TYPE=5.4-10.10
 	elif [[ $TYPE = "5.5" ]]; then

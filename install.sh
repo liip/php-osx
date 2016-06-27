@@ -20,17 +20,9 @@ if [[ $TYPE != "force" ]]; then
 		echo "****"
 		sleep 2
 	elif [[ $OS_VERSION == "10.11" ]]; then
-		echo "****"
-		echo "[WARNING]"
-		echo "Detected OS X El Capitan 10.11. As this is quite new, there may be issues still. Your mileage may vary."
-		echo "****"
-		sleep 2
+		echo "Detected OS X El Capitan 10.11. All ok."
 	elif [[ $OS_VERSION == "10.10" ]]; then
-		echo "****"
-		echo "[WARNING]"
-		echo "Detected OS X Yosemite 10.10. As this is quite new, there may be issues still. Your mileage may vary."
-		echo "****"
-		sleep 2
+		echo "Detected OS X Yosemite 10.10. All ok."
 	elif [[ $OS_VERSION == "10.9" ]]; then
 		echo "Detected OS X Mavericks 10.9 All ok."
 	elif [[ $OS_VERSION == "10.8" ]]; then

@@ -87,6 +87,8 @@ if [[ $OS_VERSION = "10.11" ]] || [[ $OS_VERSION = "10.12" ]]; then
 		TYPE=5.6-10.10
 	elif [[ $TYPE = "7.0" ]]; then
 		TYPE=7.0-10.10
+	elif [[ $TYPE = "7.1" ]]; then
+		TYPE=7.1-10.10
 	elif [[ $TYPE = "5.3" ]]; then
 		TYPE=5.3-10.10
 	fi

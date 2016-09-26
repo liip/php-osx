@@ -37,7 +37,7 @@ if [[ $TYPE != "force" ]]; then
 		echo "Stopping installation..."
 		echo "If you think that's wrong, try"
 		echo "****"
-		echo "curl -o install.sh -s http://php-osx.liip.ch/install.sh | bash install.sh force"
+		echo "curl -o install.sh -s https://php-osx.liip.ch/install.sh | bash install.sh force"
 		echo "****"
 		exit 2
 	fi
@@ -50,7 +50,7 @@ if [[ $TYPE != "force" ]]; then
 		echo "We don't support that (yet). Patches are welcome ;)"
 		echo "If you think that's wrong, try"
 		echo "****"
-		echo "curl -o install.sh -s http://php-osx.liip.ch/install.sh | bash install.sh force"
+		echo "curl -o install.sh -s https://php-osx.liip.ch/install.sh | bash install.sh force"
 		echo "****"
 		exit 1
 	fi
@@ -119,7 +119,7 @@ fi
 
 
 echo "Get packager.tgz";
-curl -s -o /tmp/packager.tgz http://php-osx.liip.ch/packager/packager.tgz
+curl -s -o /tmp/packager.tgz https://s3-eu-west-1.amazonaws.com/php-osx.liip.ch/packager/packager.tgz
 
 echo "Unpack packager.tgz";
 echo "Please type in your password, as we want to install this into /usr/local"

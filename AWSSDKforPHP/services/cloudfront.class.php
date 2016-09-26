@@ -808,6 +808,7 @@ class AmazonCloudFront extends CFRuntime
 			foreach ($paths as $path)
 			{
 				$path = str_replace('%2F', '/', rawurlencode($path));
+				$path = str_replace('%2A', '*', $path);
 				$path = (substr($path, 0, 1) === '/') ? $path : ('/' . $path);
 				$xml->addChild('Path', $path);
 			}

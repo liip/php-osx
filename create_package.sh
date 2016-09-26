@@ -135,6 +135,9 @@ cat index.html.tmpl index.html.bottom > index.html
 php uploadFile.php index.html index.html "text/html"
 php uploadFile.php install.sh install.sh "text/plain"
 
+echo "Invalidate CloudFront Cache";
+php invalidateCloudfront.php
+
 #scp ../$TYPE-$NAME-$REL.tar.gz $USER@dev2.liip.ch:/home/liip/dev2/install/$TYPE/$NAME/
 #ssh -l $USER dev2.liip.ch "ln -sf ../${TYPE}/${NAME}/${TYPE}-${NAME}-${REL}.tar.gz /home/liip/dev2/install/www/${TYPE}-${NAME}.tar.gz"
 

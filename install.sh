@@ -13,12 +13,14 @@ fi
 
 if [[ $TYPE != "force" ]]; then
 	OS_VERSION=`sw_vers -productVersion | egrep -o '10\.[0-9]+'`
-	if [[ $OS_VERSION == "10.12" ]]; then
+	if [[ $OS_VERSION == "10.13" ]]; then
 		echo "****"
 		echo "[WARNING]"
-		echo "Detected macOS Sierra 10.12. As this is quite new, there may be issues still. Your mileage may vary."
+		echo "Detected macOS Unnamed 10.13. As this is quite new, there may be issues still. Your mileage may vary."
 		echo "****"
 		sleep 2
+	elif [[ $OS_VERSION == "10.12" ]]; then
+		echo "Detected macOS Sierra 10.12. All ok."
 	elif [[ $OS_VERSION == "10.11" ]]; then
 		echo "Detected OS X El Capitan 10.11. All ok."
 	elif [[ $OS_VERSION == "10.10" ]]; then
@@ -78,7 +80,7 @@ fi
 
 # 10.11 & 10.12 should be compatible with 10.10 versions for now.
 # See https://github.com/liip/build-entropy-php/issues/16 for more
-if [[ $OS_VERSION = "10.11" ]] || [[ $OS_VERSION = "10.12" ]]; then
+if [[ $OS_VERSION = "10.11" ]] || [[ $OS_VERSION = "10.12" ]] || [[ $OS_VERSION = "10.10" ]]; then
 	if [[ $TYPE = "5.4" ]]; then
 		TYPE=5.4-10.10
 	elif [[ $TYPE = "5.5" ]]; then
@@ -94,25 +96,14 @@ if [[ $OS_VERSION = "10.11" ]] || [[ $OS_VERSION = "10.12" ]]; then
 	fi
 fi
 
-if [[ $OS_VERSION = "10.10" ]]; then
-	if [[ $TYPE = "5.4" ]]; then
-		TYPE=5.4-10.10
-	elif [[ $TYPE = "5.5" ]]; then
-		TYPE=5.5-10.10
-	elif [[ $TYPE = "5.6" ]]; then
-		TYPE=5.6-10.10
-	elif [[ $TYPE = "7.0" ]]; then
-		TYPE=7.0-10.10
-	elif [[ $TYPE = "5.3" ]]; then
-		TYPE=5.3-10.10
-	fi
-fi
-
 if [[ $TYPE = "5.6" ]]; then
-	echo "PHP 5.6 is not available yet for OS X < 10.8"
+	echo "PHP 5.6 is not available for OS X < 10.8"
+	exit 1
+elif [[ $TYPE = "7.1" ]]; then
+	echo "PHP 7.0 is not available for OS X < 10.10"
 	exit 1
 elif [[ $TYPE = "7.0" ]]; then
-	echo "PHP 7.0 is not available yet for OS X < 10.10"
+	echo "PHP 7.0 is not available for OS X < 10.10"
 	exit 1
 fi
 

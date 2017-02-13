@@ -43,8 +43,8 @@ if [[ $TYPE != "force" ]]; then
 		echo "****"
 		exit 2
 	fi
-	HAS64BIT=`sysctl -n hw.cpu64bit_capable 2> /dev/null`
-	if [[ $HAS64BIT != 1 ]]; then
+	HAS64BIT=`getconf LONG_BIT 2> /dev/null`
+	if [[ $HAS64BIT != 64 ]]; then
 		echo "****"
 		echo "ERROR! 32 BIT NOT SUPPORTED!"
 		echo "****"

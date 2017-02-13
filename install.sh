@@ -12,7 +12,7 @@ else
 fi
 
 if [[ $TYPE != "force" ]]; then
-	OS_VERSION=`sw_vers -productVersion | egrep -o '10\.[0-9]+'`
+	OS_VERSION=`sw_vers -productVersion | egrep --color=never -o '10\.[0-9]+'`
 	if [[ $OS_VERSION == "10.13" ]]; then
 		echo "****"
 		echo "[WARNING]"

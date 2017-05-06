@@ -125,6 +125,18 @@ echo "Please type in your password, as we want to install this into /usr/local"
 if [ !  -d /usr/local ] ; then sudo mkdir /usr/local; fi
 sudo  tar -C /usr/local -xzf /tmp/packager.tgz
 
-echo "Start packager (may take some time)";
-sudo /usr/local/packager/packager.py install $TYPE-frontenddev
+if [[ -f /usr/bin/python2.7 ]]; then
+   PYTHONPATH=/usr/bin/python2.7
+elif [[ -f /usr/bin/python2.6 ]]; then
+   PYTHONPATH=/usr/bin/python2.6
+elif [[ -f /usr/bin/python ]]; then
+   PYTHONPATH=/usr/bin/python
+else
+   PYTHONPATH=$(which python)
+fi
+
+echo "Start packager (may take some time) using $PYTHONPATH";
+
+sudo $PYTHONPATH /usr/local/packager/packager.py install $TYPE-frontenddev
 cd $ORIPWD
+echo "Finished."

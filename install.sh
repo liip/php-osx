@@ -16,7 +16,7 @@ if [[ $TYPE != "force" ]]; then
 	if [[ $OS_VERSION == "10.13" ]]; then
 		echo "****"
 		echo "[WARNING]"
-		echo "Detected macOS Unnamed 10.13. As this is quite new, there may be issues still. Your mileage may vary."
+		echo "Detected macOS High Sierra 10.13. As this is quite new, there may be issues still. Your mileage may vary."
 		echo "****"
 		sleep 2
 	elif [[ $OS_VERSION == "10.12" ]]; then
@@ -88,7 +88,7 @@ fi
 
 # 10.11 & 10.12 should be compatible with 10.10 versions for now.
 # See https://github.com/liip/build-entropy-php/issues/16 for more
-if [[ $OS_VERSION = "10.11" ]] || [[ $OS_VERSION = "10.12" ]] || [[ $OS_VERSION = "10.10" ]]; then
+if [[ $OS_VERSION = "10.11" ]] || [[ $OS_VERSION = "10.12" ]] || [[ $OS_VERSION = "10.13" ]] || [[ $OS_VERSION = "10.10" ]]; then
 	if [[ $TYPE = "5.4" ]]; then
 		TYPE=5.4-10.10
 	elif [[ $TYPE = "5.5" ]]; then

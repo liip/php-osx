@@ -89,6 +89,7 @@ echo "# create php.ini based on php.ini-development" >>$root/pkg/post-install
 echo "cp /usr/local/php5/lib/php.ini-development /usr/local/php5/lib/php.ini" >>$root/pkg/post-install
 cat  update_httpd_conf.sh >> $root/pkg/post-install
 echo "# restart apache" >>$root/pkg/post-install
+echo "if sudo launchctl list | grep org.apache.httpd >/dev/null; then" >>$root/pkg/post-install
 echo "echo 'Restarting Apache'" >>$root/pkg/post-install
 echo "/usr/sbin/httpd -t && /usr/sbin/apachectl restart" >>$root/pkg/post-install
 echo "if [[ $? != 0 ]]; then" >>$root/pkg/post-install
@@ -96,6 +97,7 @@ echo "echo '**********' ">>$root/pkg/post-install
 echo "echo 'INFO: If you got an error about incompatible libxml2 libraries, please restart apache by hand with:'" >>$root/pkg/post-install
 echo "echo 'sudo apachectl restart'" >>$root/pkg/post-install
 echo "echo '**********' ">>$root/pkg/post-install
+echo "fi" >>$root/pkg/post-install
 echo "fi" >>$root/pkg/post-install
 
 echo "Tag the release"

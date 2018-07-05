@@ -13,12 +13,14 @@ fi
 
 if [[ $TYPE != "force" ]]; then
 	OS_VERSION=`sw_vers -productVersion | egrep --color=never -o '10\.[0-9]+'`
-	if [[ $OS_VERSION == "10.13" ]]; then
+	if [[ $OS_VERSION == "10.14" ]]; then
 		echo "****"
 		echo "[WARNING]"
-		echo "Detected macOS High Sierra 10.13. As this is quite new, there may be issues still. Your mileage may vary."
+		echo "Detected macOS Mojave 10.14. As this is quite new, there may be issues still. Your mileage may vary."
 		echo "****"
-		sleep 2
+        sleep 2
+	elif [[ $OS_VERSION == "10.13" ]]; then
+        echo "Detected macOS High Sierra 10.13. All ok."
 	elif [[ $OS_VERSION == "10.12" ]]; then
 		echo "Detected macOS Sierra 10.12. All ok."
 	elif [[ $OS_VERSION == "10.11" ]]; then
@@ -101,6 +103,8 @@ if [[ $OS_VERSION = "10.11" ]] || [[ $OS_VERSION = "10.12" ]] || [[ $OS_VERSION 
 		TYPE=7.1-10.10
 	elif [[ $TYPE = "7.2" ]]; then
 		TYPE=7.2-10.10
+	elif [[ $TYPE = "7.3" ]]; then
+		TYPE=7.3-10.10
 	elif [[ $TYPE = "5.3" ]]; then
 		TYPE=5.3-10.10
 	fi
@@ -108,6 +112,9 @@ fi
 
 if [[ $TYPE = "5.6" ]]; then
 	echo "PHP 5.6 is not available for OS X < 10.8"
+	exit 1
+elif [[ $TYPE = "7.3" ]]; then
+	echo "PHP 7.3 is not available for OS X < 10.10"
 	exit 1
 elif [[ $TYPE = "7.2" ]]; then
 	echo "PHP 7.2 is not available for OS X < 10.10"

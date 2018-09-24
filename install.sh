@@ -12,8 +12,10 @@ else
 fi
 
 if [[ $TYPE != "force" ]]; then
-	OS_VERSION=`sw_vers -productVersion | egrep --color=never -o '10\.[0-9]+'`
-	if [[ $OS_VERSION == "10.14" ]]; then
+        OS_VERSION=`sw_vers -productVersion | egrep --color=never -o '10\.[0-9]+'`
+        OS_SUB=`echo $OS_VERSION | cut -f 2 -d "."`
+        OS_SUB=`expr $OS_SUB`
+        if [[ $OS_VERSION == "10.14" ]]; then
 		echo "****"
 		echo "[WARNING]"
 		echo "Detected macOS Mojave 10.14. As this is quite new, there may be issues still. Your mileage may vary."
@@ -88,9 +90,9 @@ if [[ $OS_VERSION = "10.8" ]] || [[ $OS_VERSION = "10.9" ]]; then
 	fi
 fi
 
-# 10.11 & 10.12 should be compatible with 10.10 versions for now.
+# 10.11 and later should be compatible with 10.10 versions for now.
 # See https://github.com/liip/build-entropy-php/issues/16 for more
-if [[ $OS_VERSION = "10.11" ]] || [[ $OS_VERSION = "10.12" ]] || [[ $OS_VERSION = "10.13" ]] || [[ $OS_VERSION = "10.10" ]]; then
+if [[ $OS_SUB -gt 9 ]]; then
 	if [[ $TYPE = "5.4" ]]; then
 		TYPE=5.4-10.10
 	elif [[ $TYPE = "5.5" ]]; then

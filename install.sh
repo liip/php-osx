@@ -11,6 +11,14 @@ else
 	TYPE=$1
 fi
 
+if [[ $TYPE = "force" ]]; then
+	if [ -z $2 ]; then
+		TYPE=$DEFAULT
+	else
+		TYPE=$2
+	fi
+fi
+
 if [[ $TYPE != "force" ]]; then
         OS_VERSION=`sw_vers -productVersion | egrep --color=never -o '10\.[0-9]+'`
         OS_SUB=`echo $OS_VERSION | cut -f 2 -d "."`
@@ -21,13 +29,17 @@ if [[ $TYPE != "force" ]]; then
 		echo "Detected macOS Mojave 10.14. There are serious issues with it, due to the original apache not loading"
 		echo "foreign libraries anymore. PHP within apache will most certainly not work anymore if you proceed!"
 		echo "The cli version still will."
-        echo "See this issue https://github.com/liip/php-osx/issues/249 for details and discussion"
+        echo "See this issue at https://github.com/liip/php-osx/issues/249 for details and discussion"
         echo "****"
-        read -p "Are you sure you want to proceed? [y/n] " -n 1 -r
-        if [[ !($REPLY =~ ^[Yy]$ ) ]]; then
-            exit 1
+        if [[ $1 = "force" ]]; then
+          echo "Proceeding"
+        else
+        echo "Restart this script with"
+        echo " curl -s https://php-osx.liip.ch/install.sh | bash -s force $1"
+        echo "to really install it"
+        echo "****"
+        exit 1
         fi
-        echo ""
 	elif [[ $OS_VERSION == "10.13" ]]; then
         echo "Detected macOS High Sierra 10.13. All ok."
 	elif [[ $OS_VERSION == "10.12" ]]; then
@@ -77,13 +89,7 @@ if [[ $TYPE != "force" ]]; then
 	fi
 fi
 
-if [[ $TYPE = "force" ]]; then
-	if [ -z $2 ]; then
-		TYPE=$DEFAULT
-	else
-		TYPE=$2
-	fi
-fi
+
 
 if [[ $OS_VERSION = "10.8" ]] || [[ $OS_VERSION = "10.9" ]]; then
 	if [[ $TYPE = "5.4" ]]; then

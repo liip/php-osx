@@ -18,9 +18,16 @@ if [[ $TYPE != "force" ]]; then
         if [[ $OS_VERSION == "10.14" ]]; then
 		echo "****"
 		echo "[WARNING]"
-		echo "Detected macOS Mojave 10.14. As this is quite new, there may be issues still. Your mileage may vary."
-		echo "****"
-        sleep 2
+		echo "Detected macOS Mojave 10.14. There are serious issues with it, due to the original apache not loading"
+		echo "foreign libraries anymore. PHP within apache will most certainly not work anymore if you proceed!"
+		echo "The cli version still will."
+        echo "See this issue https://github.com/liip/php-osx/issues/249 for details and discussion"
+        echo "****"
+        read -p "Are you sure you want to proceed? [y/n] " -n 1 -r
+        if [[ !($REPLY =~ ^[Yy]$ ) ]]; then
+            exit 1
+        fi
+        echo ""
 	elif [[ $OS_VERSION == "10.13" ]]; then
         echo "Detected macOS High Sierra 10.13. All ok."
 	elif [[ $OS_VERSION == "10.12" ]]; then

@@ -20,25 +20,32 @@ if [[ $TYPE = "force" ]]; then
 fi
 
 if [[ $TYPE != "force" ]]; then
-        OS_VERSION=`sw_vers -productVersion | egrep --color=never -o '10\.[0-9]+'`
-        OS_SUB=`echo $OS_VERSION | cut -f 2 -d "."`
-        OS_SUB=`expr $OS_SUB`
-        if [[ $OS_VERSION == "10.14" ]]; then
-		echo "****"
-		echo "[WARNING]"
-		echo "Detected macOS Mojave 10.14. There are serious issues with it, due to the original apache not loading"
-		echo "foreign libraries anymore. PHP within apache will most certainly not work anymore if you proceed!"
-		echo "The cli version still will."
-        echo "See this issue at https://github.com/liip/php-osx/issues/249 for details and discussion"
-        echo "****"
-        if [[ $1 = "force" ]]; then
-          echo "Proceeding"
+    OS_VERSION_PATCH=`sw_vers -productVersion | egrep --color=never -o '10\.[0-9]+\.[0-9]+'`
+    OS_VERSION=`echo $OS_VERSION_PATCH | cut -f 1,2 -d "."`
+    OS_SUB=`echo $OS_VERSION_PATCH | cut -f 2 -d "."`
+    OS_SUB=`expr $OS_SUB`
+    OS_PATCH=`echo $OS_VERSION_PATCH | cut -f 3 -d "."`
+    OS_PATCH=`expr $OS_PATCH`
+    if [[ $OS_VERSION == "10.14" ]]; then
+        if [[ $OS_PATCH < 4 ]]; then
+            echo "****"
+            echo "[WARNING]"
+            echo "Detected macOS Mojave <= 10.14.3. There are serious issues with it, due to the original apache not loading"
+            echo "foreign libraries anymore. PHP within apache will most certainly not work anymore if you proceed!"
+            echo "The cli version still will."
+            echo "See this issue at https://github.com/liip/php-osx/issues/249 for details and discussion"
+            echo "****"
+            if [[ $1 = "force" ]]; then
+              echo "Proceeding"
+            else
+                echo "Restart this script with"
+                echo " curl -s https://php-osx.liip.ch/install.sh | bash -s force $1"
+                echo "to really install it"
+                echo "****"
+                exit 1
+            fi
         else
-        echo "Restart this script with"
-        echo " curl -s https://php-osx.liip.ch/install.sh | bash -s force $1"
-        echo "to really install it"
-        echo "****"
-        exit 1
+            echo "Detected macOS Mojave >= 10.14.4. All ok."
         fi
 	elif [[ $OS_VERSION == "10.13" ]]; then
         echo "Detected macOS High Sierra 10.13. All ok."

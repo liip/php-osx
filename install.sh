@@ -26,7 +26,9 @@ if [[ $TYPE != "force" ]]; then
     OS_SUB=`expr $OS_SUB`
     OS_PATCH=`echo $OS_VERSION_PATCH | cut -f 3 -d "."`
     OS_PATCH=`expr $OS_PATCH`
-    if [[ $OS_VERSION == "10.14" ]]; then
+    if [[ $OS_VERSION == "10.15" ]]; then
+            echo "Detected macOS Catalina 10.15. All ok."
+    elif [[ $OS_VERSION == "10.14" ]]; then
         if [[ $OS_PATCH < 4 ]]; then
             echo "****"
             echo "[WARNING]"
@@ -48,7 +50,7 @@ if [[ $TYPE != "force" ]]; then
             echo "Detected macOS Mojave >= 10.14.4. All ok."
         fi
 	elif [[ $OS_VERSION == "10.13" ]]; then
-        echo "Detected macOS High Sierra 10.13. All ok."
+                echo "Detected macOS High Sierra 10.13. All ok."
 	elif [[ $OS_VERSION == "10.12" ]]; then
 		echo "Detected macOS Sierra 10.12. All ok."
 	elif [[ $OS_VERSION == "10.11" ]]; then

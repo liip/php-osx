@@ -47,7 +47,7 @@ if [[ $TYPE != "force" ]]; then
                 exit 1
             fi
         else
-            echo "Detected macOS Mojave >= 10.14.4. All ok."
+            //echo "Detected macOS Mojave >= 10.14.4. All ok."
         fi
 	elif [[ $OS_VERSION == "10.13" ]]; then
                 echo "Detected macOS High Sierra 10.13. All ok."
